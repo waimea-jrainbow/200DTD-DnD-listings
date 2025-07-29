@@ -8,18 +8,17 @@ by Jaxon Rainbow
 
 This project will allow members of the schools DnD club to see what campaigns are open and get contact info of DMs
 
-- Allows members of the school DnD club to view campaigns and info about them
+- Allows members of the school DnD club to view a list of campaigns and info about them
 - lets admins login to edit and add new campaigns
 - Provides a way for members to contact DMs of campaigns in order to join
--
-- Feature 5 here
+- shows users the current players in the party and the max amount the DM would like 
 
 ---
 
 ## Project Links
 
-- [GitHub repo for the project](https://...)
-- [Live web app](https://...)
+- [GitHub repo for the project](https://github.com/waimea-jrainbow/200DTD-DnD-listings)
+- [Live web app](https://two00dtd-dnd-listings.onrender.com)
 
 ---
 
@@ -50,13 +49,13 @@ The project demonstrates a number of **advanced database techniques**:
 - Linking data in related tables or nodes using queries or keys
 - Writing custom queries to filter and/or sort data
 - Using logical, mathematical and/or wildcard operators
-- Customising presentation of the data
+- Customizing presentation of the data
 - Using custom forms to add user input to the database
 - Setting validation rules for data entry
 
 The project demonstrates a number of **advanced digital media (web) techniques**:
 
-- Creating or customising scripts, code or presets
+- Creating or customizing scripts, code or presets
 - Using a combination of steps to manipulate or enhance elements
 - Using a third-party library
 - Using composite effects
