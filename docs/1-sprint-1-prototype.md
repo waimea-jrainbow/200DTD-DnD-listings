@@ -25,17 +25,17 @@ The first stage of prototyping was to explore how the UI might 'flow' between st
 
 This Figma demo shows the initial design for the UI 'flow':
 
-**FIGMA FLOW - PLACE THE FIGMA EMBED CODE HERE - MAKE SURE IT IS SET SO THAT EVERYONE CAN ACCESS IT**
+<iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450" src="https://embed.figma.com/proto/1PY5ZQQj65byePlhvUfFLN/D-D?node-id=11-98&p=f&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=11%3A98&embed-host=share" allowfullscreen></iframe>
 
 ### Testing
 
-Replace this text with notes about what you did to test the UI flow and the outcome of the testing.
+I took this to my end-user and got some feedback: so far this will work well however a confirmation page for deleting campaigns would be good
 
 ### Changes / Improvements
 
-Replace this text with notes any improvements you made as a result of the testing.
+I added a extra frame when the user clicks delete on a campaign they will be asked if they wish to proceed
 
-*IMPROVED FIGMA FLOW - PLACE THE FIGMA EMBED CODE HERE - MAKE SURE IT IS SET SO THAT EVERYONE CAN ACCESS IT*
+<iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450" src="https://embed.figma.com/proto/j3IUsdlrgKGXLjw3wtHZr1/D-D-v2?node-id=11-97&p=f&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=11%3A98&embed-host=share" allowfullscreen></iframe>
 
 
 ---

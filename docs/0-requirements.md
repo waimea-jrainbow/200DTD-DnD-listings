@@ -43,7 +43,7 @@ I will need to make sure I am following standard conventions (e.g. placement of 
 
 ## Functionality
 
-Replace this text with a clear explanation of what the implication means.
+
 
 ### Relevance to the System
 
