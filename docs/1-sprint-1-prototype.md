@@ -12,9 +12,9 @@ Develop a prototype that simulates the key functionality of the system, then tes
 
 ## Initial Database Design
 
-Replace this text with notes regarding the DB design.
+This database contains a list of campaigns with information about them which is connected to a list of players with contact information about them which is connected by a list of involved players
 
-![SCREENSHOT OF DB DESIGN](screenshots/example.png)
+![SCREENSHOT OF DB DESIGN](screenshots\drawSQL.png)
 
 
 ---
@@ -29,11 +29,13 @@ This Figma demo shows the initial design for the UI 'flow':
 
 ### Testing
 
-I took this to my end-user and got some feedback: so far this will work well however a confirmation page for deleting campaigns would be good
+I took this to my end-user and got some feedback: 
+
+> so far this will work well however a confirmation page for deleting campaigns would be good
 
 ### Changes / Improvements
 
-I added a extra frame when the user clicks delete on a campaign they will be asked if they wish to proceed
+I added a extra frame when the user clicks delete on a campaign they will be asked if they wish to proceed before it gets deleted
 
 <iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450" src="https://embed.figma.com/proto/j3IUsdlrgKGXLjw3wtHZr1/D-D-v2?node-id=11-97&p=f&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=11%3A98&embed-host=share" allowfullscreen></iframe>
 
