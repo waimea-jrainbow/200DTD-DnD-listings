@@ -7,9 +7,6 @@ New members to the D&D club can sometimes struggle to find a campaign to join an
 
 ## End-User Requirements
 
-Replace this text with a description of your typical end-users and their specific needs / expectations / requirements.
-
-
 The primary end-user will be Scott Morrison who is the leader of the D&D club.
 I will also be getting feedback from some student members of thr D&D club. 
 The specific needs of these end users is to have a simple to use interface so it caters to anyone who may use it. These users will expect a simple and functional interface that fits the aesthetic of D&D. 
@@ -17,7 +14,7 @@ The specific needs of these end users is to have a simple to use interface so it
 
 ## Proposed Solution
 
-My proposed solution is a webservice that will allow members of the schools DnD club to see listings of what campaigns are open and get contact info of DMs
+My proposed solution is a web app that will allow members of the schools DnD club to see listings of what campaigns are open and get contact info of DMs
 
 
 ---
