@@ -106,7 +106,7 @@ Use advanced techniques to develop a database means that, taking into account th
    - [ ] Using **logical, mathematical and/or wildcard operators** as needed
 
 4. You should use appropriate tools and advanced techniques to present the data:
-   - [ ] Customising **presentation** of the data (not just raw data values)
+   - [ ] Customizing **presentation** of the data (not just raw data values)
    - [ ] Using **custom forms** to add user input to the database
    - [ ] Setting **validation rules** for data entry
 

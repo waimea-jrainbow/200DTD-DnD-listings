@@ -31,8 +31,6 @@ This implication is relevant as any system should have good usability as if it d
 
 ### Impact / Considerations
 
-Replace this text with an explanation of what you will need to consider moving forward and how the project will be impacted by this implication.
-
 I will need to make sure I am following standard conventions (e.g. placement of menus, etc.), making the behavior of the outcome logical and familiar, providing the end-user with a clear route forwards (and back out, if needed), always making it obvious to the end-user what is happening.
 
 
@@ -44,7 +42,7 @@ I will need to make sure I am following standard conventions (e.g. placement of 
 
 ### Relevance to the System
 
-Replace this text with an explanation of why the implication is relevant to this particular project.
+This implication is relevant as any system should function well as if it doesn't the user won't enjoy the experience of using the interface and therefore won't use it in the future.
 
 ### Impact / Considerations
 
@@ -52,7 +50,7 @@ Replace this text with an explanation of what you will need to consider moving f
 
 
 
-## NAME OF IMPLICATION 3
+## Aesthetic implications
 
 Replace this text with a clear explanation of what the implication means.
 
@@ -66,7 +64,7 @@ Replace this text with an explanation of what you will need to consider moving f
 
 
 
-## NAME OF IMPLICATION 4
+## End-user implications
 
 Replace this text with a clear explanation of what the implication means.
 
@@ -80,7 +78,7 @@ Replace this text with an explanation of what you will need to consider moving f
 
 
 
-## NAME OF IMPLICATION 5
+## Intellectual Property Implications
 
 Replace this text with a clear explanation of what the implication means.
 
