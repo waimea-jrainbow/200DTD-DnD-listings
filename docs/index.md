@@ -1,6 +1,6 @@
-# PROJECT NAME HERE
+# DnD listings
 
-by YOUR NAME HERE
+by Jaxon Rainbow
 
 
 ---
