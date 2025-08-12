@@ -12,7 +12,7 @@ Develop a bare-bones, working web application that provides the key functionalit
 
 Replace this text with notes regarding the DB schema.
 
-![SCREENSHOT OF DB SCHEMA](screenshots/example.png)
+![SCREENSHOT OF DB SCHEMA](screenshots/dbschema.png)
 
 
 ---
