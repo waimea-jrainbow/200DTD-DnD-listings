@@ -48,7 +48,7 @@ The next stage of prototyping was to develop the layout for each screen of the U
 
 This Figma demo shows the initial layout design for the UI:
 
-<iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450" src="https://embed.figma.com/proto/Dw3sWq1TbgyqyiiYT0pAbl/D-D-v3?node-id=11-98&p=f&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=11%3A98&embed-host=share" allowfullscreen></iframe>
+<iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450" src="https://embed.figma.com/proto/Dw3sWq1TbgyqyiiYT0pAbl/D-D-v3?scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&node-id=11-98&starting-point-node-id=11%3A98&embed-host=share" allowfullscreen></iframe>
 
 ### Testing
 
