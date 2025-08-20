@@ -58,7 +58,7 @@ I took it to my end-user and they said its good but suggested some changes
 
 Added outlines to the buttons and rounded the corners and added background boxes
 
-*FIGMA IMPROVED PROTOTYPE - PLACE THE FIGMA EMBED CODE HERE - MAKE SURE IT IS SET SO THAT EVERYONE CAN ACCESS IT*
+<iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450" src="https://embed.figma.com/proto/Dw3sWq1TbgyqyiiYT0pAbl/D-D-v3?node-id=11-98&p=f&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=11%3A98&embed-host=share" allowfullscreen></iframe>
 
 
 ---
