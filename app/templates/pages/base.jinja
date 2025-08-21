@@ -24,21 +24,22 @@
 
     <script src="/static/js/utils.js"></script>
 
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.classless.slate.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.colors.min.css">
     <link rel="stylesheet" href="/static/css/styles.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.classless.red.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.colors.min.css">
+    
 </head>
 
 <body>
 
-    <header>
+    <header id="header">
         <nav>
             <ul>
                 <li><a href="/"><img id="logo" src="\static\images\dnd_logo.png"></a></li>
             </ul>
 
             <ul>
-                <li><a href="/admin">Admin</a></li>
+                <li href="/things" role="button">Admin login</li>
             </ul>
         </nav>
     </header>
@@ -48,7 +49,7 @@
     {% include "components/messages.jinja" %}
 
 
-    <main>
+    <main id="main">
 
         {% block content %}
         {% endblock %}
