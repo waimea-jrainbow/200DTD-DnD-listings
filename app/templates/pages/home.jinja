@@ -17,22 +17,30 @@
 
 {% block content %}
 
-    <h1>DnD campaign listings</h1>
+    <h1 id="h1">DnD campaign listings</h1>
 
-    <p></p>
+    <h1 id="h1">Campaigns</h1>
 
-    <p>It includes...</p>
 
-    <ul>
-        <li>Example routes</li>
-        <li>Example static pages</li>
-        <li>Missing page and server error pages</li>
-        <li>DB connection and error handling</li>
-        <li>Example CRUD actions: Create and Delete</li>
-        <li>Flash messages for information</li>
-    </ul>
+    <article>
 
-    <a href="/things" role="button">Go to the Things...</a>
+        <ul>
+            {% for campaign in campaigns %}
+
+                <li>
+                    <a href="/campaign/{{ campaign.id }}">
+                        {{ campaign.name }}
+                    </a>
+                </li>
+
+            {% else %}
+
+                <p>None!</p>
+
+            {% endfor %}
+        </ul>
+
+    </article>
 
 {% endblock %}
 

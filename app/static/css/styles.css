@@ -54,7 +54,15 @@ nav{
 }
 
 #main{
-    background-color: #121212;
-    margin-left: 5%;
+    background-color: #3d3d3d;
+    margin-top: 1rem;
     max-width: 95%;
+}
+
+html{
+    background-color: #7C7C7C;
+}
+
+#h1,p,a{
+    color:#E6E6E6;
 }

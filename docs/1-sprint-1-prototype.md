@@ -72,13 +72,13 @@ This Figma demo shows the UI with refinements applied:
 
 ### Testing
 
-Replace this text with notes about what you did to test the UI flow and the outcome of the testing.
+I showed this design to my end user, their feedback was that the background is too dark
 
 ### Changes / Improvements
 
-Replace this text with notes any improvements you made as a result of the testing.
+I lightened the background
 
-*FIGMA IMPROVED REFINED PROTOTYPE - PLACE THE FIGMA EMBED CODE HERE - MAKE SURE IT IS SET SO THAT EVERYONE CAN ACCESS IT*
+![Alt text](screenshots/final-refined-design.png)
 
 
 ---
@@ -87,3 +87,5 @@ Replace this text with notes any improvements you made as a result of the testin
 
 Replace this text with a statement about how the sprint has moved the project forward - key success point, any things that didn't go so well, etc.
 
+This sprint went well it has moved the project to a more complete form that allows me and my end-user to get a taste of what the project will look like closer to 
+completion. A key success point was getting good feedback from my end-user and being able to capitalize on it, the limitations of the figma free plan were something that didn't go well as I needed to use a screenshot for the final refined ui as I couldn't make anymore pages, designs or projects to show the changes in a live view.
