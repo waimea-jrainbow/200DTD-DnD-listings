@@ -32,7 +32,7 @@ init_datetime(app)  # Handle UTC dates in timestamps
 def show_all_things():
     with connect_db() as client:
         # Get all the things from the DB
-        sql = "SELECT id, name FROM campaigns ORDER BY name ASC"
+        sql = "SELECT id, name, max_players, current_players FROM campaigns ORDER BY name ASC"
         params = []
         result = client.execute(sql, params)
         campaigns = result.rows
@@ -55,19 +55,19 @@ def about():
 #-----------------------------------------------------------
 # Thing page route - Show details of a single thing
 #-----------------------------------------------------------
-@app.get("/thing/<int:id>")
+@app.get("/campaign/<int:id>")
 def show_one_thing(id):
     with connect_db() as client:
-        # Get the thing details from the DB
-        sql = "SELECT id, name, price FROM things WHERE id=?"
+        # Get the campaign details from the DB
+        sql = "SELECT id, name, max_players, current_players FROM campaigns WHERE id=?"
         params = [id]
         result = client.execute(sql, params)
 
         # Did we get a result?
         if result.rows:
             # yes, so show it on the page
-            thing = result.rows[0]
-            return render_template("pages/thing.jinja", thing=thing)
+            campaign = result.rows[0]
+            return render_template("pages/campaign.jinja", campaign=campaign)
 
         else:
             # No, so show error

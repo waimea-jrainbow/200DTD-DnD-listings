@@ -1,0 +1,34 @@
+{#=====================================================
+  Thing page
+  - Shows details of a single thing
+  - Has a delete link to remove it
+=====================================================#}
+
+{% extends 'pages/base.jinja' %}
+
+
+{% block title %}
+
+    Dnd listings - {{ campaign.name }}
+
+{% endblock %}
+
+
+{% block content %}
+
+    <h1>{{ campaign.name }}</h1>
+
+
+    <article>
+
+        <p><strong>Max Players:</strong> {{ campaign.max_players }}</p>
+        <p><strong>Current Players:</strong> {{ campaign.current_players }}</p>
+
+
+    </article>
+
+
+    <a role="button" href="/">Back to Campaign List</a>
+
+{% endblock %}
+
