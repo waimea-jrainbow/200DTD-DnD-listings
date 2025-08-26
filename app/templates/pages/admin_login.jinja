@@ -1,0 +1,49 @@
+{#=====================================================
+Home page
+- Hero style greeting banner
+- List of things passed in as 'things' array
+- Form for adding a new thing
+=====================================================#}
+
+{% extends 'pages/base.jinja' %}
+
+
+{% block title %}
+
+DnD Listings
+
+{% endblock %}
+
+
+{% block content %}
+
+
+
+<h1 id="h1">Admin login</h1>
+
+
+<article>
+
+    <form action="/login" method="POST">
+
+            <input
+                type="text"
+                name="username"
+                placeholder="Admin username"
+                required
+            >
+
+            <input
+                type="password"
+                name="password"
+                placeholder="Password"
+                required
+            >
+
+            <button>Login</button>
+
+        </form>
+
+</article>
+
+{% endblock %}

@@ -66,3 +66,40 @@ html{
 #h1,p,a{
     color:#E6E6E6;
 }
+
+a{
+    text-decoration: none;
+}
+
+.campaign_details{
+    display: flex;
+    gap: 2rem;
+    background-color: #7c7c7c;
+    padding: 0.6rem;
+    border-radius: 0.5rem;
+    font-size: 20px;
+    border-color: black;
+}
+
+#campaign_info_container{
+    display: flex;
+    background-color: transparent;
+    gap: 2rem;
+}
+
+#campaign_name{
+    display: flex;
+    gap: 20rem;
+    background-color:#7C7C7C;
+    border-color: black;
+}
+
+#campaign_name:hover, .campaign_details:hover{
+    background-color: #5c5c5c;
+}
+
+ul{
+    list-style-type: none;
+    padding: 0;
+    margin:1rem;
+}

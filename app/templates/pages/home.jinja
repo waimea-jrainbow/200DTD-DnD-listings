@@ -1,8 +1,8 @@
 {#=====================================================
-  Home page
-  - Hero style greeting banner
-  - List of things passed in as 'things' array
-  - Form for adding a new thing
+Home page
+- Hero style greeting banner
+- List of things passed in as 'things' array
+- Form for adding a new thing
 =====================================================#}
 
 {% extends 'pages/base.jinja' %}
@@ -10,38 +10,37 @@
 
 {% block title %}
 
-    DnD Listings
+DnD Listings
 
 {% endblock %}
 
 
 {% block content %}
 
-    <h1 id="h1">DnD campaign listings</h1>
-
-    <h1 id="h1">Campaigns</h1>
 
 
-    <article>
+<h1 id="h1">Campaigns</h1>
 
-        <ul>
-            {% for campaign in campaigns %}
 
-                <li>
-                    <a href="/campaign/{{ campaign.id }}">
-                        {{ campaign.name }}
-                        {{ campaign.current_players }}/{{ campaign.max_players }}
-                    </a>
-                </li>
+<article>
 
-            {% else %}
+    <ul>
+        {% for campaign in campaigns %}
 
-                <p>There are no current campaigns</p>
+        <li>
+            <a href="/campaign/{{ campaign.id }}">
+                {{ campaign.name }}
+                {{ campaign.current_players }}/{{ campaign.max_players }}
+            </a>
+        </li>
 
-            {% endfor %}
-        </ul>
+        {% else %}
 
-    </article>
+        <p>There are no current campaigns</p>
+
+        {% endfor %}
+    </ul>
+
+</article>
 
 {% endblock %}
-

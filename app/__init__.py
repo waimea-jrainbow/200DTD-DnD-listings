@@ -8,6 +8,9 @@
 from flask import Flask, render_template, request, flash, redirect
 import html
 
+from dotenv import load_dotenv
+from os import getenv
+
 from app.helpers.session import init_session
 from app.helpers.db      import connect_db
 from app.helpers.errors  import init_error, not_found_error
@@ -23,6 +26,11 @@ init_session(app)   # Setup a session for messages, etc.
 init_logging(app)   # Log requests
 init_error(app)     # Handle errors and exceptions
 init_datetime(app)  # Handle UTC dates in timestamps
+
+# Load Turso environment variables from the .env file
+load_dotenv()
+ADMIN_USER = getenv("ADMIN_USER1")
+ADMIN_PASS = getenv("ADMIN_PASS1")
 
 
 #-----------------------------------------------------------
@@ -50,8 +58,6 @@ def about():
     return render_template("pages/about.jinja")
 
 
-
-
 #-----------------------------------------------------------
 # Thing page route - Show details of a single thing
 #-----------------------------------------------------------
@@ -73,6 +79,50 @@ def show_one_thing(id):
             # No, so show error
             return not_found_error()
 
+
+#-----------------------------------------------------------
+# Admin view page route - Show all the campaigns with the ability to edit and delete current campaigns and add new ones through a form
+#-----------------------------------------------------------
+@app.get("/admin_view")
+def show_all_admin():
+    with connect_db() as client:
+        # Get all the campaigns from the DB
+        sql = "SELECT id, name, current_players, max_players FROM campaigns ORDER BY name ASC"
+        params = []
+        result = client.execute(sql, params)
+        campaigns = result.rows
+
+        # And show them on the page
+        return render_template("pages/admin_view.jinja", campaigns=campaigns)
+
+
+#-----------------------------------------------------------
+# Admin login page route - Show all the campaigns with the ability to edit and delete current campaigns and add new ones through a form
+#-----------------------------------------------------------
+@app.get("/admin_login")
+def show_login_page():
+
+        return render_template("pages/admin_login.jinja")
+
+
+#-----------------------------------------------------------
+# Route for logging in as an admin using data posted from a form
+#-----------------------------------------------------------
+@app.post("/login")
+def admin_login():
+    # Get the data from the form
+    user  = request.form.get("username")
+    password = request.form.get("password")
+
+    # Sanitize the text inputs
+    user = html.escape(user)
+    password = html.escape(password)
+
+    if user == ADMIN_USER and password == ADMIN_PASS:  
+        return redirect("/admin_view")
+    else:
+        flash("Incorrect username or password", "error")
+        return redirect("/admin_login")
 
 #-----------------------------------------------------------
 # Route for adding a thing, using data posted from a form

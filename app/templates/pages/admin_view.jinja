@@ -1,0 +1,69 @@
+{#=====================================================
+Things list page
+- List of things passed in as 'things' array
+- Form for adding a new thing
+=====================================================#}
+
+{% extends 'pages/base.jinja' %}
+
+
+{% block title %}
+
+Flask Demo - All Things
+
+{% endblock %}
+
+
+{% block content %}
+
+<h1 id="h1">Campaigns</h1>
+
+
+
+
+<ul id="campaign_info_container">
+    {% for campaign in campaigns %}
+    
+        <li class="campaign_details" id="campaign_name" role="button">
+            <a href="/campaign/{{ campaign.id }}">
+                {{ campaign.name }}
+            </a>
+            
+            <a href="/campaign/{{ campaign.id }}">
+                View campaign
+            </a>
+        </li>
+        <li class="campaign_details">
+            <a href="/campaign/{{ campaign.id }}/edit">Edit</a>
+        </li>
+        <li class="campaign_details">
+        <a href="/campaign/{{ campaign.id }}/delete">Delete</a>
+        </li>
+
+    
+    {% else %}
+
+    <p>There are no current campaigns</p>
+
+    {% endfor %}
+</ul>
+
+
+
+<article>
+
+    <h3>Add a New Thing...</h3>
+
+    <form action="/add" method="POST">
+
+        <input type="text" name="name" placeholder="Name of new thing" required>
+
+        <input type="number" name="price" min="0" placeholder="Price in dollars" required>
+
+        <button>Add the Thing</button>
+
+    </form>
+
+</article>
+
+{% endblock %}
