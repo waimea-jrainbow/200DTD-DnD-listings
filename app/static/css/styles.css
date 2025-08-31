@@ -71,32 +71,39 @@ a{
     text-decoration: none;
 }
 
-.campaign_details{
+.campaign_details {
     display: flex;
-    gap: 2rem;
     background-color: #7c7c7c;
     padding: 0.6rem;
     border-radius: 0.5rem;
     font-size: 20px;
     border-color: black;
+    
 }
 
-#campaign_info_container{
-    display: flex;
-    background-color: transparent;
-    gap: 2rem;
-}
-
-#campaign_name{
-    display: flex;
-    gap: 20rem;
-    background-color:#7C7C7C;
+#campaign_name {
+    background-color: #7c7c7c;
     border-color: black;
 }
 
-#campaign_name:hover, .campaign_details:hover{
+#campaign_name:hover, .campaign_details:hover {
     background-color: #5c5c5c;
 }
+
+.campaign_link {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+    width: 100%;
+    color:white;
+}
+
+.campaign_view {
+    white-space: nowrap;
+    font-weight: bold;
+}
+  
 
 ul{
     list-style-type: none;

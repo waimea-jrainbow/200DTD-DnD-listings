@@ -14,7 +14,7 @@ Develop a prototype that simulates the key functionality of the system, then tes
 
 This database contains a list of campaigns with information about them which is connected to a list of players with contact information about them which is connected by a list of involved players
 
-![SCREENSHOT OF DB DESIGN](screenshots\drawSQL.png)
+![SCREENSHOT OF DB DESIGN](screenshots\dbschema.png)
 
 
 ---

@@ -51,21 +51,13 @@ def show_all_things():
 
 
 #-----------------------------------------------------------
-# About page route
-#-----------------------------------------------------------
-@app.get("/about/")
-def about():
-    return render_template("pages/about.jinja")
-
-
-#-----------------------------------------------------------
 # Thing page route - Show details of a single thing
 #-----------------------------------------------------------
 @app.get("/campaign/<int:id>")
 def show_one_thing(id):
     with connect_db() as client:
         # Get the campaign details from the DB
-        sql = "SELECT id, name, max_players, current_players FROM campaigns WHERE id=?"
+        sql = "SELECT id, name, max_players, current_players, dm_name, description,dm_email, dm_phone, dm_discord FROM campaigns WHERE id=?"
         params = [id]
         result = client.execute(sql, params)
 
@@ -87,7 +79,7 @@ def show_one_thing(id):
 def show_all_admin():
     with connect_db() as client:
         # Get all the campaigns from the DB
-        sql = "SELECT id, name, current_players, max_players FROM campaigns ORDER BY name ASC"
+        sql = "SELECT id, name, current_players, max_players, description FROM campaigns ORDER BY name ASC"
         params = []
         result = client.execute(sql, params)
         campaigns = result.rows

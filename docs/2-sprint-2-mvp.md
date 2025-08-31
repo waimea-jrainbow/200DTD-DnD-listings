@@ -10,10 +10,15 @@ Develop a bare-bones, working web application that provides the key functionalit
 
 ## Implemented Database Schema
 
-Replace this text with notes regarding the DB schema.
+Added dm contact info
 
-![SCREENSHOT OF DB SCHEMA](screenshots/dbschema.png)
+![SCREENSHOT OF DB SCHEMA](screenshots/drawsql.png)
 
+
+## In progress feedback 
+
+1. Add discord usernames of DMs to db as most user in dnd club have discord
+![SCREENSHOT OF DB SCHEMA CHANGES](screenshots/dm_discord.png)
 
 ---
 
