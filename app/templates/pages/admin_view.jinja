@@ -13,7 +13,6 @@ Flask Demo - All Things
 
 {% endblock %}
 
-
 {% block content %}
 
 <h1 id="h1">Campaigns</h1>
@@ -21,32 +20,27 @@ Flask Demo - All Things
 
 
 
-<ul id="campaign_info_container">
+<ul class="campaign_list">
     {% for campaign in campaigns %}
-    
-        <li class="campaign_details" id="campaign_name" role="button">
-            <a href="/campaign/{{ campaign.id }}">
+    <li class="campaign_details">
+        <div class="campaign_link">
+            <a href="/campaign/{{ campaign.id }}" id="campaign_name" class="campaign_view">
                 {{ campaign.name }}
             </a>
-            
-            <a href="/campaign/{{ campaign.id }}">
-                View campaign
-            </a>
-        </li>
-        <li class="campaign_details">
-            <a href="/campaign/{{ campaign.id }}/edit">Edit</a>
-        </li>
-        <li class="campaign_details">
-        <a href="/campaign/{{ campaign.id }}/delete">Delete</a>
-        </li>
-
-    
+            <a href="/campaign/{{ campaign.id }}">View</a>
+            <div class="campaign_buttons">
+                <a href="/campaign/{{ campaign.id }}/edit" class="btn edit_btn">Edit</a>
+                <a href="/campaign/{{ campaign.id }}/delete" class="btn delete_btn">Delete</a>
+            </div>
+        </div>
+    </li>
     {% else %}
-
     <p>There are no current campaigns</p>
-
     {% endfor %}
 </ul>
+
+
+
 
 
 

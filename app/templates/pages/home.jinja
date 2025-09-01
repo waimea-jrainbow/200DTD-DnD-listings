@@ -30,7 +30,7 @@ Admin login
     <ul>
         {% for campaign in campaigns %}
 
-        <li class="campaign_details" id="campaign_name" role="button">
+        <li class="campaign_details" id="campaign_name">
             <a href="/campaign/{{ campaign.id }}" class="campaign_link">
                 <div class="campaign_main">
                     {{ campaign.name }} {{ campaign.current_players }}/{{ campaign.max_players }}
