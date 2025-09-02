@@ -83,6 +83,10 @@ a{
     text-decoration: none;
 }
 
+
+label{
+    color: white !important;
+}
 /* CAMPAIGN LISTINGS ON HOME AND ADMIN VIEW -------------------------------------------- */
 .campaign_details {
     display: flex;

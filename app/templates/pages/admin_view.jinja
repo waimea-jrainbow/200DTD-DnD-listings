@@ -29,8 +29,8 @@ Flask Demo - All Things
             </a>
             <a href="/campaign/{{ campaign.id }}">View</a>
             <div class="campaign_buttons">
-                <a href="/campaign/{{ campaign.id }}/edit" class="btn edit_btn">Edit</a>
-                <a href="/campaign/{{ campaign.id }}/delete" class="btn delete_btn">Delete</a>
+                <a href="/show_edit/{{ campaign.id }}">Edit</a>
+                <a href="/delete/{{ campaign.id }}">Delete</a>
             </div>
         </div>
     </li>
@@ -38,12 +38,6 @@ Flask Demo - All Things
     <p>There are no current campaigns</p>
     {% endfor %}
 </ul>
-
-
-
-
-
-
 
 
 <details id="add_campaign">
@@ -58,9 +52,15 @@ Flask Demo - All Things
 
             <input type="text" name="current_players" placeholder="Current amount of players" required>
 
-            <input type="text" name="descrition" placeholder="Description">
+            <input type="text" name="description" placeholder="Description">
 
-            <button>Add the Thing</button>
+            <input type="email" name="dm_email" placeholder="Dungeon master email" required>
+
+            <input type="text" name="dm_phone" placeholder="Dungeon master phone number">
+
+            <input type="text" name="dm_discord" placeholder="Dungeon master discord">
+
+            <button>Submit</button>
 
         </form>
 </details>

@@ -133,38 +133,106 @@ def admin_logout():
 # Route for adding a thing, using data posted from a form
 #-----------------------------------------------------------
 @app.post("/add")
-def add_a_thing():
+def add_a_campaign():
     # Get the data from the form
     name  = request.form.get("name")
-    price = request.form.get("price")
+    dm_name = request.form.get("dm_name")
+    max_players = request.form.get("max_players")
+    current_players = request.form.get("current_players")
+    description = request.form.get("description")
+    dm_email = request.form.get("dm_email")
+    dm_phone = request.form.get("dm_phone")
+    dm_discord = request.form.get("dm_discord")
 
     # Sanitize the text inputs
     name = html.escape(name)
+    dm_name = html.escape(dm_name)
+    description = html.escape(description)
+    dm_email = html.escape(dm_email)
+    dm_phone = html.escape(dm_phone)
+    dm_discord = html.escape(dm_discord)
 
     with connect_db() as client:
         # Add the thing to the DB
-        sql = "INSERT INTO things (name, price) VALUES (?, ?)"
-        params = [name, price]
+        sql = "INSERT INTO campaigns (name, dm_name, max_players, current_players, description, dm_email, dm_phone, dm_discord) VALUES (?, ?, ?, ?, ?, ?, ?, ?)"
+        params = [name, dm_name, max_players, current_players, description, dm_email, dm_phone, dm_discord]
         client.execute(sql, params)
 
         # Go back to the home page
-        flash(f"Thing '{name}' added", "success")
-        return redirect("/things")
+        flash(f"Campaign '{name}' added", "success")
+        return redirect("/admin_view")
 
 
 #-----------------------------------------------------------
-# Route for deleting a thing, Id given in the route
+# Route for showing editing for a campaign, Id given in the route
+#-----------------------------------------------------------
+@app.get("/show_edit/<int:id>")
+def show_edit_campaign(id):
+    with connect_db() as client:
+        sql = "SELECT * FROM campaigns WHERE id=?"
+        result = client.execute(sql, [id])
+
+        if result.rows:
+            campaign = result.rows[0]
+            return render_template("pages/edit.jinja", campaign=campaign)
+        else:
+            return not_found_error()
+
+
+#-----------------------------------------------------------
+# Route for editing a campaign, Id given in the route
+#-----------------------------------------------------------
+@app.post("/edit/<int:id>")
+def edit_campaign(id):
+    # Get the data from the form
+    name  = request.form.get("name")
+    dm_name = request.form.get("dm_name")
+    max_players = request.form.get("max_players")
+    current_players = request.form.get("current_players")
+    description = request.form.get("description")
+    dm_email = request.form.get("dm_email")
+    dm_phone = request.form.get("dm_phone")
+    dm_discord = request.form.get("dm_discord")
+
+    # Sanitize the text inputs
+    name = html.escape(name)
+    dm_name = html.escape(dm_name)
+    description = html.escape(description)
+    dm_email = html.escape(dm_email)
+    dm_phone = html.escape(dm_phone)
+    dm_discord = html.escape(dm_discord)
+
+    with connect_db() as client:
+        sql = """
+            UPDATE campaigns
+            SET name=?, dm_name=?, max_players=?, current_players=?, description=?, dm_email=?, dm_phone=?, dm_discord=?
+            WHERE id=?
+        """
+        params = [name, dm_name, max_players, current_players, description, dm_email, dm_phone, dm_discord, id]
+        client.execute(sql, params)
+
+    flash(f"Campaign '{name}' updated successfully!", "success")
+    return redirect("/admin_view")
+
+
+
+
+#-----------------------------------------------------------
+# Route for deleting a campaign, Id given in the route
 #-----------------------------------------------------------
 @app.get("/delete/<int:id>")
+def confirm_delete(id):
+    # Show confirmation template
+    return render_template("pages/confirm_delete.jinja", id=id)
+
+@app.post("/delete/<int:id>")
 def delete_a_thing(id):
     with connect_db() as client:
-        # Delete the thing from the DB
-        sql = "DELETE FROM things WHERE id=?"
-        params = [id]
-        client.execute(sql, params)
+        sql = "DELETE FROM campaigns WHERE id=?"
+        client.execute(sql, [id])
 
-        # Go back to the home page
-        flash("Thing deleted", "success")
-        return redirect("/things")
+    flash("Thing deleted", "success")
+    return redirect("/admin_view")
+
 
 
