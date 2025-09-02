@@ -231,7 +231,7 @@ def delete_a_thing(id):
         sql = "DELETE FROM campaigns WHERE id=?"
         client.execute(sql, [id])
 
-    flash("Thing deleted", "success")
+    flash("Campaign deleted", "success")
     return redirect("/admin_view")
 
 
