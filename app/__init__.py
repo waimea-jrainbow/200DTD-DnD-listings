@@ -5,7 +5,7 @@
 # BRIEF DESCRIPTION OF YOUR PROJECT HERE
 #===========================================================
 
-from flask import Flask, render_template, request, flash, redirect
+from flask import Flask, render_template, request, flash, redirect, session
 import html
 
 from dotenv import load_dotenv
@@ -102,6 +102,9 @@ def show_login_page():
 #-----------------------------------------------------------
 @app.post("/login")
 def admin_login():
+    # clear out any previous login state
+    session["logged_in"] = False
+
     # Get the data from the form
     user  = request.form.get("username")
     password = request.form.get("password")
@@ -111,11 +114,21 @@ def admin_login():
     password = html.escape(password)
 
     if user == ADMIN_USER and password == ADMIN_PASS:  
+        session["logged_in"] = True
+        flash("You have been logged in", "success")
         return redirect("/admin_view")
     else:
         flash("Incorrect username or password", "error")
         return redirect("/admin_login")
 
+#-----------------------------------------------------------
+# Route for logging out as an admin
+#----------------------------------------------------------- 
+@app.get("/logout")
+def admin_logout():
+    session["logged_in"] = False
+    flash("You have been logged out", "success")
+    return redirect("/")
 #-----------------------------------------------------------
 # Route for adding a thing, using data posted from a form
 #-----------------------------------------------------------
@@ -125,7 +138,7 @@ def add_a_thing():
     name  = request.form.get("name")
     price = request.form.get("price")
 
-    # Sanitise the text inputs
+    # Sanitize the text inputs
     name = html.escape(name)
 
     with connect_db() as client:

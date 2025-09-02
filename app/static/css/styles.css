@@ -30,10 +30,22 @@
     margin-bottom: 1rem;
 }
 
-#messages .message.success { color: var(--pico-color-green-500); }
-#messages .message.error   { color: var(--pico-color-red-500); }
+#messages .message.success { 
+    color: var(--pico-color-green-500); 
+    background-color: #3d3d3d; 
+    padding: 10px;
+    border-radius: 10px;
+}
 
 
+#messages .message.error   { 
+    color: var(--pico-color-red-500); 
+    background-color: #3d3d3d;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+/* MAIN COMPONENTS -------------------------------------------- */
 #logo{
     height: 6vh;
     width: 6vh;
@@ -71,6 +83,7 @@ a{
     text-decoration: none;
 }
 
+/* CAMPAIGN LISTINGS ON HOME AND ADMIN VIEW -------------------------------------------- */
 .campaign_details {
     display: flex;
     background-color: #7c7c7c;
@@ -86,7 +99,7 @@ a{
     border-color: black;
 }
 
-#campaign_name:hover, .campaign_details:hover {
+.campaign_details:hover {
     background-color: #5c5c5c;
 }
 
@@ -109,4 +122,16 @@ ul{
     list-style-type: none;
     padding: 0;
     margin:1rem;
+}
+
+/* ADD CAMPAIGN -------------------------------------------- */
+
+#add_campaign {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 1rem;
+    border-radius: 0.5rem;
 }

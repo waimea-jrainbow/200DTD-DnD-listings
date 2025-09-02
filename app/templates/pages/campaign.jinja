@@ -30,8 +30,12 @@
 
     </article>
 
-
-    <a role="button" href="/">Back to Campaign List</a>
+    {% if session["logged_in"] %}
+                <a href="/admin_view" role="button">Back to campaign list</a>
+                {% else %}
+                <a href="/" role="button">Back to campaign list</a>
+                {% endif %}
+    
 
 {% endblock %}
 
