@@ -48,15 +48,15 @@ Flask Demo - All Things
 
             <input type="text" name="dm_name" placeholder="Dungeon master name" required>
             
-            <input type="number" name="max_players" placeholder="Max amount of players" required>
+            <input type="number" name="max_players" placeholder="Max amount of players" required min="1">
 
-            <input type="text" name="current_players" placeholder="Current amount of players" required>
+            <input type="number" name="current_players" placeholder="Current amount of players" required min="0">
 
             <input type="text" name="description" placeholder="Description">
 
             <input type="email" name="dm_email" placeholder="Dungeon master email" required>
 
-            <input type="text" name="dm_phone" placeholder="Dungeon master phone number">
+            <input type="tel" name="dm_phone" placeholder="Dungeon master phone number" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}">
 
             <input type="text" name="dm_discord" placeholder="Dungeon master discord">
 
