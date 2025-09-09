@@ -31,11 +31,12 @@ The key functionality of the web app was implemented:
 
 ---
 
-## Testing FEATURE NAME HERE
+## Testing View campaigns
 
-Replace this text with notes about what you are testing, how you tested it, and the outcome of the testing
 
-**PLACE SCREENSHOTS AND/OR ANIMATED GIFS OF THE TESTING HERE**
+I tested the ability to view campaigns from the main home page i did this by clicking the button the outcome was it opening and showing the correct information 
+
+docs\screenshots\testing_view.gif
 
 ### Changes / Improvements
 
