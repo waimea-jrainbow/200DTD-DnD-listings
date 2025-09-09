@@ -26,7 +26,7 @@ Added dm contact info
 
 The key functionality of the web app was implemented:
 
-**PLACE SCREENSHOTS AND/OR ANIMATED GIFS OF THE SYSTEM HERE**
+![GIF OF FUNCTIONALITY](screenshots\initial_implementation.gif)
 
 
 ---
