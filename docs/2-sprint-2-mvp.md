@@ -36,7 +36,7 @@ The key functionality of the web app was implemented:
 
 I tested the ability to view campaigns from the main home page i did this by clicking the button the outcome was it opening and showing the correct information 
 
-docs\screenshots\testing_view.gif
+![GIF OF FUNCTIONALITY](screenshots\testing_view.gif)
 
 ### Changes / Improvements
 
