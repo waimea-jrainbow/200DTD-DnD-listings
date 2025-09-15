@@ -36,7 +36,7 @@ ADMIN_PASS = getenv("ADMIN_PASS1")
 #-----------------------------------------------------------
 # Home page route
 #-----------------------------------------------------------
-@app.route"/")
+@app.route("/")
 def show_all_things():
     with connect_db() as client:
         # Get all the things from the DB
