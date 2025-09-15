@@ -1,8 +1,9 @@
 #===========================================================
-# YOUR PROJECT TITLE HERE
-# YOUR NAME HERE
+# DnD listings
+# Jaxon Rainbow
 #-----------------------------------------------------------
-# BRIEF DESCRIPTION OF YOUR PROJECT HERE
+# This site will allow users to view DnD campaigns and
+# allow DMs to list their campaigns for players to find.
 #===========================================================
 
 from flask import Flask, render_template, request, flash, redirect, session
