@@ -11,6 +11,14 @@ The primary end-user will be Scott Morrison who is the leader of the D&D club.
 I will also be getting feedback from some student members of thr D&D club. 
 The specific needs of these end users is to have a simple to use interface so it caters to anyone who may use it. These users will expect a simple and functional interface that fits the aesthetic of D&D. 
 
+the specific functionality requirements are:
+- be able to view a concise list of campaigns easily as a player
+- be able to view in depth relevant information about a chosen campaign 
+- login in as an admin user 
+- as an admin edit campaigns 
+- as an admin delete campaigns 
+- as an admin add new campaigns
+
 
 ## Proposed Solution
 

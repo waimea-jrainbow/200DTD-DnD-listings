@@ -42,7 +42,7 @@ The key functionality of the web app was implemented:
 ## Testing 
 
 
-I tested the ability to view campaigns from the main home page i did this by clicking the button the outcome was it opening and showing the correct information 
+1. be able to view a concise list of campaigns easily as a player
 
 ![GIF OF FUNCTIONALITY](screenshots\testing_)
 
