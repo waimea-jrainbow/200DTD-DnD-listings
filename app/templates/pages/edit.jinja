@@ -30,7 +30,7 @@ Flask Demo - All Things
   <input type="number" name="current_players" value="{{ campaign.current_players }}" required>
 
   <label>Description</label>
-  <textarea name="description">{{ campaign.description }}</textarea>
+  <input type="text" name="description" value="{{ campaign.description }}" required>
 
   <label>Email</label>
   <input type="email" name="dm_email" value="{{ campaign.dm_email }}">
@@ -40,6 +40,14 @@ Flask Demo - All Things
 
   <label>Discord</label>
   <input type="text" name="dm_discord" value="{{ campaign.dm_discord }}">
+
+  <label>Current level</label>
+  <input type="number" name="current_level" value="{{ campaign.current_level }}">
+
+  <label>current documents *e.g. middle earth|https://docs.google.com/document/middleearth*</label>
+  <input type="text" name="docs_link" value="{{ campaign.docs_link }}">
+
+
 
   <button type="submit">Save Changes</button>
 </form>

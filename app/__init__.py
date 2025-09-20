@@ -57,7 +57,7 @@ def show_all_things():
 def show_one_thing(id):
     with connect_db() as client:
         # Get the campaign details from the DB
-        sql = "SELECT id, name, max_players, current_players, dm_name, description,dm_email, dm_phone, dm_discord FROM campaigns WHERE id=?"
+        sql = "SELECT id, name, max_players, current_players, dm_name, description,dm_email, dm_phone, dm_discord, docs_link FROM campaigns WHERE id=?"
         params = [id]
         result = client.execute(sql, params)
 
@@ -143,6 +143,7 @@ def add_a_campaign():
     dm_email = request.form.get("dm_email")
     dm_phone = request.form.get("dm_phone")
     dm_discord = request.form.get("dm_discord")
+    docs_link = request.form.get("docs_link")
 
     # Sanitize the text inputs
     name = html.escape(name)
@@ -151,11 +152,12 @@ def add_a_campaign():
     dm_email = html.escape(dm_email)
     dm_phone = html.escape(dm_phone)
     dm_discord = html.escape(dm_discord)
+    docs_link = html.escape(docs_link)
 
     with connect_db() as client:
         # Add the thing to the DB
-        sql = "INSERT INTO campaigns (name, dm_name, max_players, current_players, description, dm_email, dm_phone, dm_discord) VALUES (?, ?, ?, ?, ?, ?, ?, ?)"
-        params = [name, dm_name, max_players, current_players, description, dm_email, dm_phone, dm_discord]
+        sql = "INSERT INTO campaigns (name, dm_name, max_players, current_players, description, dm_email, dm_phone, dm_discord, docs_link) VALUES (?, ?, ?, ?, ?, ?, ?, ?)"
+        params = [name, dm_name, max_players, current_players, description, dm_email, dm_phone, dm_discord, docs_link]
         client.execute(sql, params)
 
         # Go back to the home page
@@ -193,6 +195,7 @@ def edit_campaign(id):
     dm_email = request.form.get("dm_email")
     dm_phone = request.form.get("dm_phone")
     dm_discord = request.form.get("dm_discord")
+    docs_link = request.form.get("docs_link")
 
     # Sanitize the text inputs
     name = html.escape(name)
@@ -201,14 +204,15 @@ def edit_campaign(id):
     dm_email = html.escape(dm_email)
     dm_phone = html.escape(dm_phone)
     dm_discord = html.escape(dm_discord)
+    docs_link = html.escape(docs_link)
 
     with connect_db() as client:
         sql = """
             UPDATE campaigns
-            SET name=?, dm_name=?, max_players=?, current_players=?, description=?, dm_email=?, dm_phone=?, dm_discord=?
+            SET name=?, dm_name=?, max_players=?, current_players=?, description=?, dm_email=?, dm_phone=?, dm_discord=?, docs_link=?
             WHERE id=?
         """
-        params = [name, dm_name, max_players, current_players, description, dm_email, dm_phone, dm_discord, id]
+        params = [name, dm_name, max_players, current_players, description, dm_email, dm_phone, dm_discord, docs_link, id]
         client.execute(sql, params)
 
     flash(f"Campaign '{name}' updated successfully!", "success")

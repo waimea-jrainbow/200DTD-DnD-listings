@@ -1,7 +1,7 @@
 {#=====================================================
-  Thing page
-  - Shows details of a single thing
-  - Has a delete link to remove it
+Campaign page
+- Shows details of a single thing
+- Has a delete link to remove it
 =====================================================#}
 
 {% extends 'pages/base.jinja' %}
@@ -9,33 +9,47 @@
 
 {% block title %}
 
-    Dnd listings - {{ campaign.name }}
+Dnd listings - {{ campaign.name }}
 
 {% endblock %}
 
 
 {% block content %}
 
-    <h1>{{ campaign.name }}</h1>
+<h1>{{ campaign.name }}</h1>
 
 
-    <article>
-        <p><strong>DM:</strong> {{ campaign.dm_name }}</p>
-        <p><strong>Players:</strong> {{ campaign.current_players }}/{{ campaign.max_players }}</p>
-        <p><strong>Description:</strong> {{ campaign.description }}</p>
-        <p><strong>Dm contact info:</strong></p>
-        <p><strong>Email: </strong>{{ campaign.dm_email }}</p>
-        <p><strong>Phone: </strong>{{ campaign.dm_phone }}</p>
-        <p><strong>Discord:</strong>{{ campaign.dm_discord }}</p>
-
-    </article>
-
-    {% if session["logged_in"] %}
-                <a href="/admin_view" role="button">Back to campaign list</a>
-                {% else %}
-                <a href="/" role="button">Back to campaign list</a>
-                {% endif %}
+<article>
+    <p><strong>DM:</strong> {{ campaign.dm_name }}</p>
+    <p><strong>Players:</strong> {{ campaign.current_players }}/{{ campaign.max_players }}</p>
+    <p><strong>Description:</strong> {{ campaign.description }}</p>
+    <p><strong>Dm contact info:</strong></p>
+    <p><strong>Email: </strong>{{ campaign.dm_email }}</p>
+    <p><strong>Phone: </strong>{{ campaign.dm_phone }}</p>
+    <p><strong>Discord: </strong>{{ campaign.dm_discord }}</p>
+    <p><strong>Current level</strong>{{ campaign.current_level }}</p>
+    <p><strong>Current documents: </strong></p>
+    {% if campaign.docs_link %}
+    {% set items = campaign.docs_link.split(',') %}
+    {% for item in items %}
+    {% set parts = item.split('|') %}
+    <a role="button" href="{{ parts[1].strip() }}" target="_blank" class="btn btn-primary">
+        {{ parts[0].strip() }}
+    </a>
+    {% endfor %}
+    {% else %}
+    <em>No documents provided</em>
+    {% endif %}
     
 
-{% endblock %}
 
+</article>
+
+{% if session["logged_in"] %}
+<a href="/admin_view" role="button">Back to campaign list</a>
+{% else %}
+<a href="/" role="button">Back to campaign list</a>
+{% endif %}
+
+
+{% endblock %}

@@ -87,6 +87,12 @@ a{
 label{
     color: white !important;
 }
+
+#docs_format :hover{
+    
+}
+
+
 /* CAMPAIGN LISTINGS ON HOME AND ADMIN VIEW -------------------------------------------- */
 .campaign_details {
     display: flex;
