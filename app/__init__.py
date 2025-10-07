@@ -29,8 +29,8 @@ init_error(app)     # Handle errors and exceptions
 init_datetime(app)  # Handle UTC dates in timestamps
 
 # Load Turso environment variables from the .env file
-ADMIN_USER = getenv("ADMIN_USER1")
-ADMIN_PASS = getenv("ADMIN_PASS1")
+ADMIN_USER = getenv("ADMIN_USER")
+ADMIN_PASS = getenv("ADMIN_PASS")
 
 
 #----------------------------------------------------------

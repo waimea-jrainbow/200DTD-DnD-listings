@@ -145,3 +145,33 @@ ul{
     padding: 1rem;
     border-radius: 0.5rem;
 }
+
+/* ADD DOCS -------------------------------------------- */
+
+.doc_entry {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.doc_entry input {
+    flex: 1;
+    margin-right: 5px;
+    padding: 5px;
+    font-size: 1rem;
+}
+
+.remove_btn {
+    background: none;
+    border: none;
+    color: #888;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 1rem;
+    padding: 0 5px;
+    line-height: 1;
+}
+
+.remove_btn:hover {
+    color: red;
+}

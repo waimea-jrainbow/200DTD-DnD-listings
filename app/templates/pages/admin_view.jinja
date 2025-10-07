@@ -42,32 +42,38 @@ Flask Demo - All Things
 
 <details id="add_campaign">
     <summary role="button">Add a new campaign</summary>
-        <form action="/add" method="POST">
+    <form action="/add" method="POST" id="campaign_form">
 
-            <input type="text" name="name" placeholder="Name of new campaign" required>
+        <input type="text" name="name" placeholder="Name of new campaign" required>
 
-            <input type="text" name="dm_name" placeholder="Dungeon master name" required>
-            
-            <input type="number" name="max_players" placeholder="Max amount of players" required min="1">
+        <input type="text" name="dm_name" placeholder="Dungeon master name" required>
 
-            <input type="number" name="current_players" placeholder="Current amount of players" required min="0">
+        <input type="number" name="max_players" placeholder="Max amount of players" required min="1">
 
-            <input type="text" name="description" placeholder="Description">
+        <input type="number" name="current_players" placeholder="Current amount of players" required min="0">
 
-            <input type="email" name="dm_email" placeholder="Dungeon master email" required>
+        <input type="text" name="description" placeholder="Description">
 
-            <input type="tel" name="dm_phone" placeholder="Dungeon master phone number">
+        <input type="email" name="dm_email" placeholder="Dungeon master email" required>
 
-            <input type="text" name="dm_discord" placeholder="Dungeon master discord">
+        <input type="tel" name="dm_phone" placeholder="Dungeon master phone number">
 
-            <input type="number" name="current_level" placeholder="current party level"
-            
-            <input type="text" name="docs_link" placeholder="current documents e.g. name|link">
+        <input type="text" name="dm_discord" placeholder="Dungeon master discord">
 
+        <input type="number" name="current_level" placeholder="Current party level">
+        
+        <div id="docs_container">
+            <div class="doc_entry">
+                <input type="text" name="docs_link[]" placeholder="Current documents e.g. name|link">
+            </div>
+        </div>
 
-            <button>Submit</button>
-
-        </form>
+        <button type="button" id="add_doc_btn">Add another document</button>
+        <br><br>
+        <button type="submit">Submit</button>
+    </form>
 </details>
+
+
 
     {% endblock %}

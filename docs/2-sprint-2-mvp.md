@@ -30,12 +30,13 @@ The key functionality of the web app was implemented:
 ## In progress feedback 
 
 1. Add discord usernames of DMs to db as most user in dnd club have discord
+
 ![SCREENSHOT OF DB SCHEMA CHANGES](screenshots/dm_discord.png)
 
 
 2. Add more info e.g. lore document attachment, current level
-
-
+ 
+![SCREENSHOT OF DB SCHEMA CHANGES](screenshots/currentlevelanddocs.png)
 
 ---
 
