@@ -57,7 +57,7 @@ def show_all_things():
 def show_one_thing(id):
     with connect_db() as client:
         # Get the campaign details from the DB
-        sql = "SELECT id, name, max_players, current_players, dm_name, description,dm_email, dm_phone, dm_discord, docs_link FROM campaigns WHERE id=?"
+        sql = "SELECT id, name, max_players, current_players, dm_name, description,dm_email, dm_phone, dm_discord, docs_link1, docs_link2, docs_link3 FROM campaigns WHERE id=?"
         params = [id]
         result = client.execute(sql, params)
 
