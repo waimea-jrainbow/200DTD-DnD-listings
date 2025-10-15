@@ -29,7 +29,8 @@ init_error(app)     # Handle errors and exceptions
 init_datetime(app)  # Handle UTC dates in timestamps
 
 load_dotenv()
-# Load Turso environment variables from the .env file
+
+# Load environment variables from the .env file
 ADMIN_USER = getenv("ADMIN_USER")
 ADMIN_PASS = getenv("ADMIN_PASS")
 
@@ -240,4 +241,10 @@ def delete_a_thing(id):
     return redirect("/admin_view")
 
 
-
+#-----------------------------------------------------------
+# Run the Flask app
+#-----------------------------------------------------------
+if __name__ == "__main__":
+    import os
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port, debug=True)
