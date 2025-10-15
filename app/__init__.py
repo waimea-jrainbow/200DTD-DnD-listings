@@ -28,6 +28,7 @@ init_logging(app)   # Log requests
 init_error(app)     # Handle errors and exceptions
 init_datetime(app)  # Handle UTC dates in timestamps
 
+load_dotenv()
 # Load Turso environment variables from the .env file
 ADMIN_USER = getenv("ADMIN_USER")
 ADMIN_PASS = getenv("ADMIN_PASS")
