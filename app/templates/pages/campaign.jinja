@@ -28,17 +28,22 @@ Dnd listings - {{ campaign.name }}
     <p><strong>Phone: </strong>{{ campaign.dm_phone }}</p>
     <p><strong>Discord: </strong>{{ campaign.dm_discord }}</p>
     <p><strong>Current level</strong>{{ campaign.current_level }}</p>
-    <p><strong>Current documents: </strong></p>
-    {% if campaign.docs_link %}
-    {% set items = campaign.docs_link.split(',') %}
-    {% for item in items %}
-    {% set parts = item.split('|') %}
-    <a role="button" href="{{ parts[1].strip() }}" target="_blank" class="btn btn-primary">
-        {{ parts[0].strip() }}
-    </a>
+    <p><strong>Current documents:</strong></p>
+    {% set docs = [campaign.docs_link1, campaign.docs_link2, campaign.docs_link3, campaign.docs_link4, campaign.docs_link5] %}
+    {% set has_docs = false %}
+    {% for doc in docs %}
+        {% if doc %}
+            {% set has_docs = true %}
+            <p>
+                <a role="button" href="{{ doc }}" target="_blank" class="btn btn-primary">
+                    Document {{ loop.index }}
+                </a>
+            </p>
+        {% endif %}
     {% endfor %}
-    {% else %}
-    <p>No documents provided</p>
+
+    {% if not has_docs %}
+        <p>No documents provided</p>
     {% endif %}
     
 

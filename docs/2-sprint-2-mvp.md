@@ -40,12 +40,27 @@ The key functionality of the web app was implemented:
 
 ---
 
-## Testing 
+## Testing campaign list
 
 
 1. be able to view a concise list of campaigns easily as a player
 
-![GIF OF FUNCTIONALITY](screenshots\testing_)
+![IMAGE OF FUNCTIONALITY](screenshots\testing_list.png)
+
+### Changes / Improvements
+
+I added the DM name to the information displayed in the main page list 
+
+![IMAGE OF CHANGES](screenshots\change_list.png)
+
+
+---
+
+## Testing campaign details 
+
+2. Able to view useful details about a specific campaign
+
+**PLACE SCREENSHOTS AND/OR ANIMATED GIFS OF THE TESTING HERE**
 
 ### Changes / Improvements
 
@@ -56,7 +71,7 @@ Replace this text with notes any improvements you made as a result of the testin
 
 ---
 
-## Testing FEATURE NAME HERE
+## Testing adding campaign
 
 Replace this text with notes about what you are testing, how you tested it, and the outcome of the testing
 
@@ -71,7 +86,7 @@ Replace this text with notes any improvements you made as a result of the testin
 
 ---
 
-## Testing FEATURE NAME HERE
+## Testing editing campaign
 
 Replace this text with notes about what you are testing, how you tested it, and the outcome of the testing
 
@@ -86,22 +101,7 @@ Replace this text with notes any improvements you made as a result of the testin
 
 ---
 
-## Testing FEATURE NAME HERE
-
-Replace this text with notes about what you are testing, how you tested it, and the outcome of the testing
-
-**PLACE SCREENSHOTS AND/OR ANIMATED GIFS OF THE TESTING HERE**
-
-### Changes / Improvements
-
-Replace this text with notes any improvements you made as a result of the testing.
-
-**PLACE SCREENSHOTS AND/OR ANIMATED GIFS OF THE IMPROVED SYSTEM HERE**
-
-
----
-
-## Testing FEATURE NAME HERE
+## Testing deleting campaign
 
 Replace this text with notes about what you are testing, how you tested it, and the outcome of the testing
 
