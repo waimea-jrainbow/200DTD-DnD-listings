@@ -22,18 +22,18 @@ Flask Demo - All Things
 
 <ul class="campaign_list">
     {% for campaign in campaigns %}
-    <li class="campaign_details">
-        <div class="campaign_link">
-            <a href="/campaign/{{ campaign.id }}" class="campaign_view">
+
+    <li class="campaign_details" id="campaign_name" type="button">
+        <a href="/campaign/{{ campaign.id }}" class="campaign_link">
+            <div class="campaign_main">
                 {{ campaign.name }}
-            </a>
-            <a href="/campaign/{{ campaign.id }}">View</a>
-            <div class="campaign_buttons">
-                <a href="/show_edit/{{ campaign.id }}">Edit</a>
-                <a href="/delete/{{ campaign.id }}">Delete</a>
             </div>
-        </div>
+            <div class="campaign_view">View campaign</div>
+        </a>
+        <a href="/show_edit/{{ campaign.id }}" class="edit-delete">Edit</a>
+        <a href="/delete/{{ campaign.id }}" class="edit-delete">Delete</a>
     </li>
+
     {% else %}
     <p>There are no current campaigns</p>
     {% endfor %}
@@ -43,24 +43,24 @@ Flask Demo - All Things
 <details id="add_campaign">
     <summary role="button">Add a new campaign</summary>
     <form action="/add" method="POST"> <input type="text" name="name" placeholder="Name of new campaign" required>
-        <input type="text" name="dm_name" placeholder="Dungeon master name" required> 
-        <input type="number" name="max_players" placeholder="Max amount of players" required min="1"> 
-        <input type="number" name="current_players" placeholder="Current amount of players" required min="0"> 
-        <input type="text" name="description" placeholder="Description"> 
-        <input type="email" name="dm_email" placeholder="Dungeon master email" required> 
-        <input type="tel" name="dm_phone" placeholder="Dungeon master phone number"> 
-        <input type="text" name="dm_discord" placeholder="Dungeon master discord"> 
-        <input type="number" name="current_level" placeholder="current party level"> 
+        <input type="text" name="dm_name" placeholder="Dungeon master name" required>
+        <input type="number" name="max_players" placeholder="Max amount of players" required min="1">
+        <input type="number" name="current_players" placeholder="Current amount of players" required min="0">
+        <input type="text" name="description" placeholder="Description">
+        <input type="email" name="dm_email" placeholder="Dungeon master email" required>
+        <input type="tel" name="dm_phone" placeholder="Dungeon master phone number">
+        <input type="text" name="dm_discord" placeholder="Dungeon master discord">
+        <input type="number" name="current_level" placeholder="current party level">
         <p>Current documents e.g. name | link</p>
-        <input type="text" name="docs_link1" > 
-        <input type="text" name="docs_link2"> 
-        <input type="text" name="docs_link3"> 
-        <input type="text" name="docs_link4"> 
-        <input type="text" name="docs_link5"> 
+        <input type="text" name="docs_link1">
+        <input type="text" name="docs_link2">
+        <input type="text" name="docs_link3">
+        <input type="text" name="docs_link4">
+        <input type="text" name="docs_link5">
 
-            
+
         <button>Submit</button>
 
 
 
-{% endblock %}
+        {% endblock %}

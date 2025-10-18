@@ -59,7 +59,7 @@ def show_all_things():
 def show_one_thing(id):
     with connect_db() as client:
         # Get the campaign details from the DB
-        sql = "SELECT id, name, max_players, current_players, dm_name, description,dm_email, dm_phone, dm_discord, docs_link1, docs_link2, docs_link3, docs_link4, docs_link5 FROM campaigns WHERE id=?"
+        sql = "SELECT id, name, max_players, current_players, dm_name, description,dm_email ,current_level, dm_phone, dm_discord, docs_link1, docs_link2, docs_link3, docs_link4, docs_link5 FROM campaigns WHERE id=?"
         params = [id]
         result = client.execute(sql, params)
 
@@ -145,6 +145,7 @@ def add_a_campaign():
     dm_email = request.form.get("dm_email")
     dm_phone = request.form.get("dm_phone")
     dm_discord = request.form.get("dm_discord")
+    current_level = request.form.get("current_level")
     docs_link = request.form.get("docs_link")
 
     # Sanitize the text inputs
@@ -197,6 +198,7 @@ def edit_campaign(id):
     dm_email = request.form.get("dm_email")
     dm_phone = request.form.get("dm_phone")
     dm_discord = request.form.get("dm_discord")
+    current_level = request.form.get("current_level")
     docs_link1 = request.form.get("docs_link1")
     docs_link2 = request.form.get("docs_link2")
     docs_link3 = request.form.get("docs_link3")
@@ -222,10 +224,10 @@ def edit_campaign(id):
     with connect_db() as client:
         sql = """
             UPDATE campaigns
-            SET name=?, dm_name=?, max_players=?, current_players=?, description=?, dm_email=?, dm_phone=?, dm_discord=?, docs_link1=?, docs_link2=?, docs_link3=?, docs_link4=?, docs_link5=?
+            SET name=?, dm_name=?, max_players=?, current_players=?, description=?, dm_email=?, dm_phone=?, dm_discord=?, current_level=? , docs_link1=?, docs_link2=?, docs_link3=?, docs_link4=?, docs_link5=?
             WHERE id=?
         """
-        params = [name, dm_name, max_players, current_players, description, dm_email, dm_phone, dm_discord, docs_link1, docs_link2, docs_link3, docs_link4, docs_link5, id]
+        params = [name, dm_name, max_players, current_players, description, dm_email, dm_phone, dm_discord, current_level, docs_link1, docs_link2, docs_link3, docs_link4, docs_link5, id]
         client.execute(sql, params)
 
     flash(f"Campaign '{name}' updated successfully!", "success")

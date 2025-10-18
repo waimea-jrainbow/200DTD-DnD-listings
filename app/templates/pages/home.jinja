@@ -27,7 +27,7 @@ DnD Listings
     <ul>
         {% for campaign in campaigns %}
 
-        <li class="campaign_details" id="campaign_name">
+        <li class="campaign_details" id="campaign_name" type="button">
             <a href="/campaign/{{ campaign.id }}" class="campaign_link">
                 <div class="campaign_main">
                     {{ campaign.name }} {{ campaign.dm_name }} {{ campaign.current_players }}/{{ campaign.max_players }}
