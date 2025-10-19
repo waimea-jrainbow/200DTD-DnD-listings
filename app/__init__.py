@@ -146,7 +146,11 @@ def add_a_campaign():
     dm_phone = request.form.get("dm_phone")
     dm_discord = request.form.get("dm_discord")
     current_level = request.form.get("current_level")
-    docs_link = request.form.get("docs_link")
+    docs_link1 = request.form.get("docs_link1")
+    docs_link2 = request.form.get("docs_link2")
+    docs_link3 = request.form.get("docs_link3")
+    docs_link4 = request.form.get("docs_link4")
+    docs_link5 = request.form.get("docs_link5")
 
     # Sanitize the text inputs
     name = html.escape(name)
@@ -159,8 +163,8 @@ def add_a_campaign():
 
     with connect_db() as client:
         # Add the thing to the DB
-        sql = "INSERT INTO campaigns (name, dm_name, max_players, current_players, description, dm_email, dm_phone, dm_discord, docs_link) VALUES (?, ?, ?, ?, ?, ?, ?, ?)"
-        params = [name, dm_name, max_players, current_players, description, dm_email, dm_phone, dm_discord, docs_link]
+        sql = "INSERT INTO campaigns (name, dm_name, max_players, current_players, description, dm_email, dm_phone, dm_discord, docs_link1, docs_link2, docs_link3, docs_link4, docs_link5) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
+        params = [name, dm_name, max_players, current_players, description, dm_email, dm_phone, dm_discord, docs_link1, docs_link2, docs_link3, docs_link4, docs_link5]
         client.execute(sql, params)
 
         # Go back to the home page

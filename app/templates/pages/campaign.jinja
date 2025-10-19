@@ -16,10 +16,10 @@ Dnd listings - {{ campaign.name }}
 
 {% block content %}
 
-<h1>{{ campaign.name }}</h1>
+<h1 id="details_title">{{ campaign.name }}</h1>
 
 
-<article>
+<article id="campaign_specifics">
     <p><strong>DM:</strong> {{ campaign.dm_name }}</p>
     <p><strong>Players:</strong> {{ campaign.current_players }}/{{ campaign.max_players }}</p>
     <p><strong>Description:</strong> {{ campaign.description }}</p>
@@ -50,9 +50,9 @@ Dnd listings - {{ campaign.name }}
 </article>
 
 {% if session["logged_in"] %}
-<a href="/admin_view" role="button">Back to campaign list</a>
+<a id="back_button" href="/admin_view" role="button">Back to campaign list</a>
 {% else %}
-<a href="/" role="button">Back to campaign list</a>
+<a id="back_button" href="/" role="button">Back to campaign list</a>
 {% endif %}
 
 
