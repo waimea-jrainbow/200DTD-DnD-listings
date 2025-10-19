@@ -60,7 +60,7 @@ I added the DM name to the information displayed in the main page list
 
 2. Able to view useful details about a specific campaign
 
-**PLACE SCREENSHOTS AND/OR ANIMATED GIFS OF THE TESTING HERE**
+![IMAGE OF FUNCTIONALITY](screenshots\testing_details.gif)
 
 ### Changes / Improvements
 

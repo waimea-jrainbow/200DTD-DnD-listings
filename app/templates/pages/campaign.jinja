@@ -27,23 +27,24 @@ Dnd listings - {{ campaign.name }}
     <p><strong>Email: </strong>{{ campaign.dm_email }}</p>
     <p><strong>Phone: </strong>{{ campaign.dm_phone }}</p>
     <p><strong>Discord: </strong>{{ campaign.dm_discord }}</p>
-    <p><strong>Current level:</strong>{{ campaign.current_level }}</p>
-    <p><strong>Current documents:</strong></p>
-    {% set docs = [campaign.docs_link1, campaign.docs_link2, campaign.docs_link3, campaign.docs_link4,
-    campaign.docs_link5] %}
+    <p><strong>Current level: </strong>{{ campaign.current_level }}</p>
+    <div id="">
+        <p><strong>Current documents:</strong></p>
+        {% set docs = [campaign.docs_link1, campaign.docs_link2, campaign.docs_link3, campaign.docs_link4,
+        campaign.docs_link5] %}
 
-    {% for doc in docs %}
-    {% if doc %}
-    <p>
-        <a role="button" href="{{ doc }}" target="_blank" class="btn btn-primary">
-            Document {{ loop.index }}
-        </a>
-    </p>
-    {% else %}
-    <p>No {{ loop.index }} document provided</p>
-    {% endif %}
-    {% endfor %}
-    
+        {% for doc in docs %}
+        {% if doc %}
+        <p>
+            <a role="button" href="{{ doc }}" target="_blank" class="btn btn-primary">
+                Document {{ loop.index }}
+            </a>
+        </p>
+        {% else %}
+        <p>No {{ loop.index }} document provided</p>
+        {% endif %}
+        {% endfor %}
+    </div>
 
 
 </article>

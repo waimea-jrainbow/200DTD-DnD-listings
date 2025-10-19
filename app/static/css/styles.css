@@ -88,9 +88,7 @@ label{
     color: white !important;
 }
 
-#docs_format :hover{
-    
-}
+
 
 
 /* CAMPAIGN LISTINGS ON HOME AND ADMIN VIEW -------------------------------------------- */
@@ -127,12 +125,22 @@ label{
     font-weight: bold;
 }
   
+.campaign_name :hover {
+    background-color: red;
+}
+
+.edit-delete{
+    padding-left: 20px;
+}
+
 
 ul{
     list-style-type: none;
     padding: 0;
     margin:1rem;
 }
+
+
 
 /* ADD CAMPAIGN -------------------------------------------- */
 
