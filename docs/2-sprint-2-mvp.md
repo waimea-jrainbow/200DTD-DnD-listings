@@ -60,28 +60,28 @@ I added the DM name to the information displayed in the main page list
 
 2. Able to view useful details about a specific campaign
 
-![IMAGE OF FUNCTIONALITY](screenshots\testing_details.gif)
+![GIF OF FUNCTIONALITY](screenshots\testing_details.gif)
 
 ### Changes / Improvements
 
-Replace this text with notes any improvements you made as a result of the testing.
+Centred the details and button
 
-**PLACE SCREENSHOTS AND/OR ANIMATED GIFS OF THE IMPROVED SYSTEM HERE**
+![GIF OF FUNCTIONALITY](screenshots\testing_details.gif)
 
 
 ---
 
 ## Testing adding campaign
 
-Replace this text with notes about what you are testing, how you tested it, and the outcome of the testing
+Testing ability to add campaigns I tested it by adding a campaign. The outcome was pretty good but current players could be more than max players
 
-**PLACE SCREENSHOTS AND/OR ANIMATED GIFS OF THE TESTING HERE**
+![GIF OF FUNCTIONALITY](screenshots\testing_add.gif)
 
 ### Changes / Improvements
 
-Replace this text with notes any improvements you made as a result of the testing.
+Made DB unable to accept current player greater than max players
 
-**PLACE SCREENSHOTS AND/OR ANIMATED GIFS OF THE IMPROVED SYSTEM HERE**
+![GIF OF FUNCTIONALITY](screenshots\change_add.gif)
 
 
 ---
@@ -90,7 +90,7 @@ Replace this text with notes any improvements you made as a result of the testin
 
 Replace this text with notes about what you are testing, how you tested it, and the outcome of the testing
 
-**PLACE SCREENSHOTS AND/OR ANIMATED GIFS OF THE TESTING HERE**
+![GIF OF FUNCTIONALITY](screenshots\testing_edit.gif)
 
 ### Changes / Improvements
 

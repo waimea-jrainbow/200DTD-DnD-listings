@@ -48,12 +48,12 @@ Dnd listings - {{ campaign.name }}
 
 
 </article>
-
-{% if session["logged_in"] %}
-<a id="back_button" href="/admin_view" role="button">Back to campaign list</a>
-{% else %}
-<a id="back_button" href="/" role="button">Back to campaign list</a>
-{% endif %}
-
+<div id="back_button_container">
+    {% if session["logged_in"] %}
+    <a id="back_button" href="/admin_view" role="button">Back to campaign list</a>
+    {% else %}
+    <a id="back_button" href="/" role="button">Back to campaign list</a>
+    {% endif %}
+</div>
 
 {% endblock %}

@@ -169,11 +169,16 @@ ul{
     color: white;
 }
 
-#back_button{
+#back_button_container{
     display: flex;
     justify-content: center;
-    margin-left: 20rem;
-    margin-right: 20rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+#back_button{
+    text-align: center;
+    width: 20rem;
     
     
 }

@@ -124,14 +124,6 @@ def admin_login():
         return redirect("/admin_login")
 
 #-----------------------------------------------------------
-# Route for logging out as an admin
-#----------------------------------------------------------- 
-@app.get("/logout")
-def admin_logout():
-    session["logged_in"] = False
-    flash("You have been logged out", "success")
-    return redirect("/")
-#-----------------------------------------------------------
 # Route for adding a thing, using data posted from a form
 #-----------------------------------------------------------
 @app.post("/add")
@@ -139,8 +131,8 @@ def add_a_campaign():
     # Get the data from the form
     name  = request.form.get("name")
     dm_name = request.form.get("dm_name")
-    max_players = request.form.get("max_players")
-    current_players = request.form.get("current_players")
+    max_players = int(request.form.get("max_players"))
+    current_players = int(request.form.get("current_players"))
     description = request.form.get("description")
     dm_email = request.form.get("dm_email")
     dm_phone = request.form.get("dm_phone")
@@ -151,6 +143,11 @@ def add_a_campaign():
     docs_link3 = request.form.get("docs_link3")
     docs_link4 = request.form.get("docs_link4")
     docs_link5 = request.form.get("docs_link5")
+
+    # Validation: ensure current players ≤ max players
+    if current_players > max_players:
+        flash("Current players cannot be greater than max players.", "error")
+        return redirect("/admin_view")
 
     # Sanitize the text inputs
     name = html.escape(name)
@@ -163,14 +160,13 @@ def add_a_campaign():
 
     with connect_db() as client:
         # Add the thing to the DB
-        sql = "INSERT INTO campaigns (name, dm_name, max_players, current_players, description, dm_email, dm_phone, dm_discord, docs_link1, docs_link2, docs_link3, docs_link4, docs_link5) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
-        params = [name, dm_name, max_players, current_players, description, dm_email, dm_phone, dm_discord, docs_link1, docs_link2, docs_link3, docs_link4, docs_link5]
+        sql = "INSERT INTO campaigns (name, dm_name, max_players, current_players, description, dm_email, dm_phone, dm_discord, docs_link1, docs_link2, docs_link3, docs_link4, docs_link5, current_level) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
+        params = [name, dm_name, max_players, current_players, description, dm_email, dm_phone, dm_discord, docs_link1, docs_link2, docs_link3, docs_link4, docs_link5, current_level]
         client.execute(sql, params)
 
         # Go back to the home page
         flash(f"Campaign '{name}' added", "success")
         return redirect("/admin_view")
-
 
 #-----------------------------------------------------------
 # Route for showing editing for a campaign, Id given in the route
