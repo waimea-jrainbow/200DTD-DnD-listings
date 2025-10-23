@@ -84,11 +84,9 @@ a{
 }
 
 
-label{
+p, label, h2 {
     color: white !important;
 }
-
-
 
 
 /* CAMPAIGN LISTINGS ON HOME AND ADMIN VIEW -------------------------------------------- */

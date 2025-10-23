@@ -229,7 +229,11 @@ def edit_campaign(id):
         """
         params = [name, dm_name, max_players, current_players, description, dm_email, dm_phone, dm_discord, current_level, docs_link1, docs_link2, docs_link3, docs_link4, docs_link5, id]
         client.execute(sql, params)
-
+    
+    if current_players > max_players:
+        flash("Current players cannot be greater than max players.", "error")
+        return redirect(f"/show_edit/{id}")
+    
     flash(f"Campaign '{name}' updated successfully!", "success")
     return redirect("/admin_view")
 

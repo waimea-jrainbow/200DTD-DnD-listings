@@ -88,30 +88,31 @@ Made DB unable to accept current player greater than max players
 
 ## Testing editing campaign
 
-Replace this text with notes about what you are testing, how you tested it, and the outcome of the testing
+Tested editing a campaign by running through editing a campaign
 
 ![GIF OF FUNCTIONALITY](screenshots\testing_edit.gif)
 
 ### Changes / Improvements
 
-Replace this text with notes any improvements you made as a result of the testing.
+Added cancel button and placeholder for documents
 
-**PLACE SCREENSHOTS AND/OR ANIMATED GIFS OF THE IMPROVED SYSTEM HERE**
+![IMAGE OF CHANGES](screenshots\change_edit.png)
 
 
 ---
 
 ## Testing deleting campaign
 
-Replace this text with notes about what you are testing, how you tested it, and the outcome of the testing
+Testing deletion of a campaign by deleting a campaign
 
-**PLACE SCREENSHOTS AND/OR ANIMATED GIFS OF THE TESTING HERE**
+![GIF OF FUNCTIONALITY](screenshots\testing_delete.gif)
 
 ### Changes / Improvements
 
-Replace this text with notes any improvements you made as a result of the testing.
+fixed endless loading by making confirmation 2 links as opposed to a form like it was
 
-**PLACE SCREENSHOTS AND/OR ANIMATED GIFS OF THE IMPROVED SYSTEM HERE**
+![IMAGE OF CHANGES](screenshots\change_delete.png)
+![GIF OF CHANGES](screenshots\change_delete.gif)
 
 
 ---

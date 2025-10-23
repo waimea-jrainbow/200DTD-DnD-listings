@@ -44,17 +44,17 @@ Flask Demo - All Things
   <label>Current level:</label>
   <input type="number" name="current_level" value="{{ campaign.current_level }}">
 
-  <label>current documents *e.g. middle earth | https://docs.google.com/document/middleearth*</label>
-  <input type="text" name="docs_link1" value="{{ campaign.docs_link1 }}">
-  <input type="text" name="docs_link2" value="{{ campaign.docs_link2 }}">
-  <input type="text" name="docs_link3" value="{{ campaign.docs_link3 }}">
-  <input type="text" name="docs_link4" value="{{ campaign.docs_link4 }}">
-  <input type="text" name="docs_link5" value="{{ campaign.docs_link5 }}">
+  <label>current documents e.g. middle earth | https://docs.google.com/document/d/docID</label>
+  <input type="text" name="docs_link1" value="{{ campaign.docs_link1 }}" placeholder="Document name|Document link">
+  <input type="text" name="docs_link2" value="{{ campaign.docs_link2 }}" placeholder="Document name|Document link">
+  <input type="text" name="docs_link3" value="{{ campaign.docs_link3 }}" placeholder="Document name|Document link">
+  <input type="text" name="docs_link4" value="{{ campaign.docs_link4 }}" placeholder="Document name|Document link">
+  <input type="text" name="docs_link5" value="{{ campaign.docs_link5 }}" placeholder="Document name|Document link">
 
 
 
-  <button type="submit">Save Changes</button>
+  <button type="submit" role="button">Save Changes</button>
 </form>
-
+<a href="/admin_view" role="button">Cancel</a>
 
 {% endblock %}
