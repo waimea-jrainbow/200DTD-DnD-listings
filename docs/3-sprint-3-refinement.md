@@ -8,12 +8,15 @@ Develop the system until it is fully featured, with a refined UI and it satisfie
 
 ---
 
-## Updated Database Schema (if it changed)
+## Updated Database Schema 
 
-Replace this text with notes regarding the DB schema.
+I have now realized that i never used second and third tables in my database which means I'm not using linked tables... Gonna have to fix that
 
-![SCREENSHOT OF DB SCHEMA](screenshots/example.png)
+![SCREENSHOT OF DB SCHEMA](screenshots/final_db.png)
 
+changed from player details to dm details
+
+will now need to add page for adding dm details on admin page
 
 ---
 

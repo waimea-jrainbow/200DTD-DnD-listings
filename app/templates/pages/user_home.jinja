@@ -1,0 +1,26 @@
+{% extends 'pages/base.jinja' %}
+
+{% block title %}
+DnD Listings
+{% endblock %}
+
+{% block content %}
+
+<h1 id="h1">Campaigns</h1>
+
+<article>
+    <ul>
+        {% for campaign in campaigns %}
+        <li class="details">
+            <a href="/campaign/{{ campaign.id }}" class="link">
+                <div id="name">{{ campaign.name }} - DM: {{ campaign.dm_name }} ({{ campaign.current_players }}/{{ campaign.max_players }})</div>
+                <div class="view">View</div>
+            </a>
+        </li>
+        {% else %}
+        <p>There are no current campaigns</p>
+        {% endfor %}
+    </ul>
+</article>
+
+{% endblock %}

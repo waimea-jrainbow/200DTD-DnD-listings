@@ -1,0 +1,53 @@
+{% extends 'pages/base.jinja' %}
+
+{% block title %}
+Flask Demo - All Campaigns
+{% endblock %}
+
+{% block content %}
+
+<h1 id="h1">Campaigns</h1>
+
+<ul>
+    {% for campaign in campaigns %}
+    <li class="details">
+        <a href="/campaign/{{ campaign.id }}" class="link">
+            <div id="name">{{ campaign.name }}</div>
+            <div class="view">View</div>
+        </a>
+        <div class="edit-delete">
+            <a href="/show_edit/{{ campaign.id }}">Edit</a> |
+            <a href="/admin_confirm_delete/{{ campaign.id }}">Delete</a>
+        </div>
+    </li>
+    {% else %}
+    <p>There are no current campaigns</p>
+    {% endfor %}
+</ul>
+
+<details id="add_campaign">
+    <summary role="button">Add a new campaign</summary>
+    <form action="/add" method="POST">
+        <input type="text" name="name" placeholder="Name of new campaign" required>
+        <input type="text" name="dm_name" placeholder="Dungeon Master name" required>
+        <input type="number" name="max_players" placeholder="Max players" required min="1">
+        <input type="number" name="current_players" placeholder="Current players" required min="0">
+        <input type="text" name="description" placeholder="Description">
+        <input type="email" name="dm_email" placeholder="Dungeon Master email" required>
+        <input type="tel" name="dm_phone" placeholder="Dungeon Master phone">
+        <input type="text" name="dm_discord" placeholder="Dungeon Master Discord">
+        <input type="number" name="current_level" placeholder="Current party level">
+        <p>Current documents (e.g., Middle Earth|https://docs.google.com/...)</p>
+        <input type="text" name="docs_link1" placeholder="Document name|Link">
+        <input type="text" name="docs_link2" placeholder="Document name|Link">
+        <input type="text" name="docs_link3" placeholder="Document name|Link">
+        <input type="text" name="docs_link4" placeholder="Document name|Link">
+        <input type="text" name="docs_link5" placeholder="Document name|Link">
+
+        <button>Submit</button>
+    </form>
+</details>
+
+
+
+{% endblock %}

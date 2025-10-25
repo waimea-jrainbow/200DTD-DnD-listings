@@ -1,0 +1,59 @@
+{#=====================================================
+Campaign page
+- Shows details of a single thing
+- Has a delete link to remove it
+=====================================================#}
+
+{% extends 'pages/base.jinja' %}
+
+
+{% block title %}
+
+Dnd listings - {{ DM.name }}
+
+{% endblock %}
+
+
+{% block content %}
+
+<h1 id="details_title">{{ campaign.name }}</h1>
+
+
+<article id="campaign_specifics">
+    <p><strong>DM:</strong> {{ campaign.dm_name }}</p>
+    <p><strong>Players:</strong> {{ campaign.current_players }}/{{ campaign.max_players }}</p>
+    <p><strong>Description:</strong> {{ campaign.description }}</p>
+    <p><strong>Dm contact info:</strong></p>
+    <p><strong>Email: </strong>{{ campaign.dm_email }}</p>
+    <p><strong>Phone: </strong>{{ campaign.dm_phone }}</p>
+    <p><strong>Discord: </strong>{{ campaign.dm_discord }}</p>
+    <p><strong>Current level: </strong>{{ campaign.current_level }}</p>
+    <div id="">
+        <p><strong>Current documents:</strong></p>
+        {% set docs = [campaign.docs_link1, campaign.docs_link2, campaign.docs_link3, campaign.docs_link4,
+        campaign.docs_link5] %}
+
+        {% for doc in docs %}
+        {% if doc %}
+        <p>
+            <a role="button" href="{{ doc }}" target="_blank" class="btn btn-primary">
+                Document {{ loop.index }}
+            </a>
+        </p>
+        {% else %}
+        <p>No {{ loop.index }} document provided</p>
+        {% endif %}
+        {% endfor %}
+    </div>
+
+
+</article>
+<div id="back_button_container">
+    {% if session["logged_in"] %}
+    <a id="back_button" href="/admin_view" role="button">Back to campaign list</a>
+    {% else %}
+    <a id="back_button" href="/" role="button">Back to campaign list</a>
+    {% endif %}
+</div>
+
+{% endblock %}

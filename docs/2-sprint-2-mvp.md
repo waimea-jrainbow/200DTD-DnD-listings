@@ -80,7 +80,25 @@ Testing ability for admin to log in to edit, add or delete campaigns
 
 ### changes/improvements
 
-![GIF OF CHANGES](screenshots\change_login.gif)
+Added cancel button to return to homepage
+
+![GIF OF CHANGES](screenshots\change_login.png)
+
+---
+
+## Testing logging out as admin
+
+Testing ability for admin to log out and return to the homepage
+
+![GIF OF FUNCTIONALITY](screenshots\testing_logout.gif)
+
+### changes/improvements
+
+Added cancel button to return to homepage
+
+![GIF OF CHANGES](screenshots\change_logout.gif)
+
+
 
 ---
 
@@ -128,4 +146,11 @@ Testing deletion of a campaign by deleting a campaign
 ## Sprint Review
 
 Replace this text with a statement about how the sprint has moved the project forward - key success point, any things that didn't go so well, etc.
+
+This sprint went pretty great it has taken the project even closer to completion and allowed me to work out some kinks after testing 
+A key success point was being able to test the interface and see what worked and what didn't and needed tweaking, a limitation was having to use OBS to screen record on my computer at home as i couldn't get a decent gif recorder on linux and trying to do so wasted a lot of time.
+
+---
+
+Addendum: I have now realized that i never used second and third tables in my database which means I'm not using linked tables... Gonna have to fix that
 

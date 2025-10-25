@@ -1,0 +1,42 @@
+{% extends 'pages/base.jinja' %}
+
+{% block title %}
+WaiCol D&D - All dms
+{% endblock %}
+
+{% block content %}
+
+<h1 id="h1">Dungeon Masters</h1>
+
+<ul>
+    {% for DM in DMs %}
+    <li class="details">
+        <a href="/dm/{{ DM.id }}" class="link">
+            <div id="name">{{ DM.dm_name }}</div>
+            <div class="view">View</div>
+        </a>
+        <div class="edit-delete">
+            <a href="/show_edit/{{ DM.id }}">Edit</a> |
+            <a href="/admin_confirm_delete/{{ DM.dm_id }}">Delete</a>
+        </div>
+    </li>
+    {% else %}
+    <p>There are no current Dungeon Masters</p>
+    {% endfor %}
+</ul>
+
+
+<details id="add_dm">
+    <summary role="button">Add a Dungeon Master</summary>
+    <form action="/add_dm" method="POST">
+        <input type="text" name="dm_name" placeholder="Name of new DM" required>
+        <input type="text" name="dm_email" placeholder="DM email">
+        <input type="text" name="dm_phone" placeholder="DM phone">
+        <input type="text" name="dm_discord" placeholder="DM Discord">
+        <input type="text" name="dm_campaigns" placeholder="Current campaigns">
+
+        <button>Submit</button>
+    </form>
+</details>
+
+{% endblock %}

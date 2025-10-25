@@ -89,8 +89,8 @@ p, label, h2 {
 }
 
 
-/* CAMPAIGN LISTINGS ON HOME AND ADMIN VIEW -------------------------------------------- */
-.campaign_details {
+/* LISTINGS -------------------------------------------- */
+.details {
     display: flex;
     background-color: #7c7c7c;
     padding: 0.6rem;
@@ -100,16 +100,16 @@ p, label, h2 {
     
 }
 
-#campaign_name {
+#name {
     background-color: #7c7c7c;
     border-color: black;
 }
 
-.campaign_details:hover {
+.details:hover {
     background-color: #5c5c5c;
 }
 
-.campaign_link {
+.link {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -118,12 +118,12 @@ p, label, h2 {
     color:white;
 }
 
-.campaign_view {
+.view {
     white-space: nowrap;
     font-weight: bold;
 }
   
-.campaign_name :hover {
+.name :hover {
     background-color: red;
 }
 

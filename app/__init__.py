@@ -48,18 +48,18 @@ def show_all_things():
         campaigns = result.rows
 
         # And show them on the page
-        return render_template("pages/home.jinja", campaigns=campaigns)
+        return render_template("pages/user_home.jinja", campaigns=campaigns)
 
 
 
 #-----------------------------------------------------------
-# Thing page route - Show details of a single thing
+# campaign page route - Show details of a single campaign
 #-----------------------------------------------------------
 @app.get("/campaign/<int:id>")
-def show_one_thing(id):
+def show_one_campaign(id):
     with connect_db() as client:
         # Get the campaign details from the DB
-        sql = "SELECT id, name, max_players, current_players, dm_name, description,dm_email ,current_level, dm_phone, dm_discord, docs_link1, docs_link2, docs_link3, docs_link4, docs_link5 FROM campaigns WHERE id=?"
+        sql = "SELECT id, name, max_players, current_players, dm_name, description, dm_email, current_level, dm_phone, dm_discord, docs_link1, docs_link2, docs_link3, docs_link4, docs_link5 FROM campaigns WHERE id=?"
         params = [id]
         result = client.execute(sql, params)
 
@@ -67,8 +67,27 @@ def show_one_thing(id):
         if result.rows:
             # yes, so show it on the page
             campaign = result.rows[0]
-            return render_template("pages/campaign.jinja", campaign=campaign)
+            return render_template("pages/user_campaign.jinja", campaign=campaign)
+        else:
+            # No, so show error
+            return not_found_error()
 
+#-----------------------------------------------------------
+# campaign page route - Show details of a single campaign
+#-----------------------------------------------------------
+@app.get("/dm/<int:id>")
+def show_one_dm(id):
+    with connect_db() as client:
+        # Get the campaign details from the DB
+        sql = "SELECT dm_id, dm_name, dm_ email, dm_phone, dm_discord, dm_campaignsFROM campaigns WHERE id=?"
+        params = [id]
+        result = client.execute(sql, params)
+
+        # Did we get a result?
+        if result.rows:
+            # yes, so show it on the page
+            dm = result.rows[0]
+            return render_template("pages/user_dm.jinja", dm=dm)
         else:
             # No, so show error
             return not_found_error()
@@ -77,7 +96,7 @@ def show_one_thing(id):
 #-----------------------------------------------------------
 # Admin view page route - Show all the campaigns with the ability to edit and delete current campaigns and add new ones through a form
 #-----------------------------------------------------------
-@app.get("/admin_view")
+@app.get("/admin_home")
 def show_all_admin():
     with connect_db() as client:
         # Get all the campaigns from the DB
@@ -87,20 +106,19 @@ def show_all_admin():
         campaigns = result.rows
 
         # And show them on the page
-        return render_template("pages/admin_view.jinja", campaigns=campaigns)
+        return render_template("pages/admin_home.jinja", campaigns=campaigns)
 
 
 #-----------------------------------------------------------
-# Admin login page route - Show all the campaigns with the ability to edit and delete current campaigns and add new ones through a form
+# Admin login page route
 #-----------------------------------------------------------
 @app.get("/admin_login")
 def show_login_page():
-
-        return render_template("pages/admin_login.jinja")
+    return render_template("pages/admin_login.jinja")
 
 
 #-----------------------------------------------------------
-# Route for logging in as an admin using data posted from a form
+# Route for logging in and out as an admin using data posted from a form
 #-----------------------------------------------------------
 @app.post("/login")
 def admin_login():
@@ -118,18 +136,27 @@ def admin_login():
     if user == ADMIN_USER and password == ADMIN_PASS:  
         session["logged_in"] = True
         flash("You have been logged in", "success")
-        return redirect("/admin_view")
+        return redirect("/admin_home")
     else:
         flash("Incorrect username or password", "error")
         return redirect("/admin_login")
 
-@app.get("/logout")
+
+@app.get("/confirm_logout")
+def confirm_logout():
+    # Show confirmation page
+    return render_template("pages/admin_confirm_logout.jinja")
+
+
+@app.post("/logout")
 def admin_logout():
     session["logged_in"] = False
     flash("You have been logged out", "success")
     return redirect("/")
+
+
 #-----------------------------------------------------------
-# Route for adding a thing, using data posted from a form
+# Route for adding a campaign
 #-----------------------------------------------------------
 @app.post("/add")
 def add_a_campaign():
@@ -162,19 +189,25 @@ def add_a_campaign():
     dm_phone = html.escape(dm_phone)
     dm_discord = html.escape(dm_discord)
     
-
     with connect_db() as client:
-        # Add the thing to the DB
-        sql = "INSERT INTO campaigns (name, dm_name, max_players, current_players, description, dm_email, dm_phone, dm_discord, docs_link1, docs_link2, docs_link3, docs_link4, docs_link5, current_level) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
-        params = [name, dm_name, max_players, current_players, description, dm_email, dm_phone, dm_discord, docs_link1, docs_link2, docs_link3, docs_link4, docs_link5, current_level]
+        # Add the campaign to the DB
+        sql = """
+            INSERT INTO campaigns 
+            (name, dm_name, max_players, current_players, description, dm_email, dm_phone, dm_discord, 
+             docs_link1, docs_link2, docs_link3, docs_link4, docs_link5, current_level)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        """
+        params = [name, dm_name, max_players, current_players, description, dm_email, dm_phone, dm_discord, 
+                  docs_link1, docs_link2, docs_link3, docs_link4, docs_link5, current_level]
         client.execute(sql, params)
 
         # Go back to the home page
         flash(f"Campaign '{name}' added", "success")
         return redirect("/admin_view")
 
+
 #-----------------------------------------------------------
-# Route for showing editing for a campaign, Id given in the route
+# Route for showing the edit page for a campaign
 #-----------------------------------------------------------
 @app.get("/show_edit/<int:id>")
 def show_edit_campaign(id):
@@ -184,13 +217,13 @@ def show_edit_campaign(id):
 
         if result.rows:
             campaign = result.rows[0]
-            return render_template("pages/edit.jinja", campaign=campaign)
+            return render_template("pages/admin_edit.jinja", campaign=campaign)
         else:
             return not_found_error()
 
 
 #-----------------------------------------------------------
-# Route for editing a campaign, Id given in the route
+# Route for editing a campaign
 #-----------------------------------------------------------
 @app.post("/edit/<int:id>")
 def edit_campaign(id):
@@ -209,10 +242,8 @@ def edit_campaign(id):
     docs_link3 = request.form.get("docs_link3")
     docs_link4 = request.form.get("docs_link4")
     docs_link5 = request.form.get("docs_link5")
-    
 
-
-    # Sanitize the text inputs
+    # Sanitize text inputs
     name = html.escape(name)
     dm_name = html.escape(dm_name)
     description = html.escape(description)
@@ -225,17 +256,18 @@ def edit_campaign(id):
     docs_link4 = html.escape(docs_link4)
     docs_link5 = html.escape(docs_link5)
 
-
     with connect_db() as client:
         sql = """
             UPDATE campaigns
-            SET name=?, dm_name=?, max_players=?, current_players=?, description=?, dm_email=?, dm_phone=?, dm_discord=?, current_level=? , docs_link1=?, docs_link2=?, docs_link3=?, docs_link4=?, docs_link5=?
+            SET name=?, dm_name=?, max_players=?, current_players=?, description=?, dm_email=?, dm_phone=?, 
+                dm_discord=?, current_level=?, docs_link1=?, docs_link2=?, docs_link3=?, docs_link4=?, docs_link5=?
             WHERE id=?
         """
-        params = [name, dm_name, max_players, current_players, description, dm_email, dm_phone, dm_discord, current_level, docs_link1, docs_link2, docs_link3, docs_link4, docs_link5, id]
+        params = [name, dm_name, max_players, current_players, description, dm_email, dm_phone, dm_discord, 
+                  current_level, docs_link1, docs_link2, docs_link3, docs_link4, docs_link5, id]
         client.execute(sql, params)
     
-    if current_players > max_players:
+    if int(current_players) > int(max_players):
         flash("Current players cannot be greater than max players.", "error")
         return redirect(f"/show_edit/{id}")
     
@@ -243,15 +275,14 @@ def edit_campaign(id):
     return redirect("/admin_view")
 
 
-
-
 #-----------------------------------------------------------
-# Route for deleting a campaign, Id given in the route
+# Route for deleting a campaign
 #-----------------------------------------------------------
-@app.get("/delete/<int:id>")
+@app.get("/admin_confirm_delete/<int:id>")
 def confirm_delete(id):
     # Show confirmation template
-    return render_template("pages/confirm_delete.jinja", id=id)
+    return render_template("pages/admin_confirm_delete.jinja", id=id)
+
 
 @app.post("/delete/<int:id>")
 def delete_a_thing(id):
@@ -261,6 +292,77 @@ def delete_a_thing(id):
 
     flash("Campaign deleted", "success")
     return redirect("/admin_view")
+
+
+#-----------------------------------------------------------
+# Route for deleting a DM
+#-----------------------------------------------------------
+@app.get("/admin_confirm_delete/<int:id>")
+def confirm_delete(id):
+    # Show confirmation template
+    return render_template("pages/admin_confirm_delete.jinja", id=id)
+
+
+@app.post("/delete/<int:id>")
+def delete_a_thing(id):
+    with connect_db() as client:
+        sql = "DELETE FROM campaigns WHERE id=?"
+        client.execute(sql, [id])
+
+    flash("Campaign deleted", "success")
+    return redirect("/admin_view")
+
+
+
+
+#-----------------------------------------------------------
+# Route for rendering dm list
+#-----------------------------------------------------------
+@app.get("/admin_dms")
+def show_all_admin_dms():
+    with connect_db() as client:
+        # Get all the dms from the DB
+        sql = "SELECT dm_id, dm_name FROM dms ORDER BY dm_name ASC"
+        params = []
+        result = client.execute(sql, params)
+        DMs = result.rows
+
+        # And show them on the page
+        return render_template("pages/admin_dms.jinja", DMs=DMs)
+
+
+#-----------------------------------------------------------
+# Route for adding a DM
+#-----------------------------------------------------------
+@app.post("/add_dm")
+def add_a_dm():
+    # Get the data from the form
+    dm_name = request.form.get("dm_name")
+    dm_email = request.form.get("dm_email")
+    dm_phone = request.form.get("dm_phone")
+    dm_discord = request.form.get("dm_discord")
+    dm_campaigns = request.form.get("dm_campaigns")
+    
+
+    # Sanitize the text inputs
+    dm_name = html.escape(dm_name)
+    dm_email = html.escape(dm_email)
+    dm_discord = html.escape(dm_discord)
+    dm_campaigns = html.escape(dm_campaigns)
+    
+    with connect_db() as client:
+        # Add the campaign to the DB
+        sql = """
+            INSERT INTO dms
+            (dm_name, dm_email, dm_phone, dm_discord, dm_campaigns)
+            VALUES (?, ?, ?, ?, ?)
+        """
+        params = [dm_name, dm_email, dm_phone, dm_discord, dm_campaigns]
+        client.execute(sql, params)
+
+        # Go back to the home page
+        flash(f"Dungeon Master '{dm_name}' added", "success")
+        return redirect("/admin_dms")
 
 
 #-----------------------------------------------------------

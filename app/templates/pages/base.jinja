@@ -37,14 +37,20 @@ Base template
         <nav>
             <ul>
                 <li><a href="/"><img id="logo" src="\static\images\dnd_logo.png"></a></li>
-                <h1 id="h1">DnD campaign listings</h1>
+                <h1 id="h1">WaiCol D&D</h1>
+
+                {% if session["logged_in"] %}
+                <li><a href="/admin_home" role="button">Admin view</a></li>
+                <li><a href="/admin_dms" role="button">DMs</a></li>
+                <li><a href="/" role="button">User view</a></li>
+                {% endif %}
+
             </ul>
             
 
             <ul>
                 {% if session["logged_in"] %}
-                <li><a href="/admin_view" role="button">Admin view</a></li>
-                <li><a href="/logout" role="button">Logout</a></li>
+                <li><a href="/confirm_logout" role="button">Logout</a></li>
                 {% else %}
                 <li><a href="/admin_login" role="button">Login</a></li>
                 {% endif %}
