@@ -71,6 +71,19 @@ Centred the details and button
 
 ---
 
+## Testing logging in as admin
+
+Testing ability for admin to log in to edit, add or delete campaigns 
+
+
+![GIF OF FUNCTIONALITY](screenshots\testing_login.gif)
+
+### changes/improvements
+
+![GIF OF CHANGES](screenshots\change_login.gif)
+
+---
+
 ## Testing adding campaign
 
 Testing ability to add campaigns I tested it by adding a campaign. The outcome was pretty good but current players could be more than max players
@@ -81,7 +94,7 @@ Testing ability to add campaigns I tested it by adding a campaign. The outcome w
 
 Made DB unable to accept current player greater than max players
 
-![GIF OF FUNCTIONALITY](screenshots\change_add.gif)
+![GIF OF CHANGES](screenshots\change_add.gif)
 
 
 ---
@@ -107,12 +120,7 @@ Testing deletion of a campaign by deleting a campaign
 
 ![GIF OF FUNCTIONALITY](screenshots\testing_delete.gif)
 
-### Changes / Improvements
 
-fixed endless loading by making confirmation 2 links as opposed to a form like it was
-
-![IMAGE OF CHANGES](screenshots\change_delete.png)
-![GIF OF CHANGES](screenshots\change_delete.gif)
 
 
 ---

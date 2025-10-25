@@ -123,6 +123,11 @@ def admin_login():
         flash("Incorrect username or password", "error")
         return redirect("/admin_login")
 
+@app.get("/logout")
+def admin_logout():
+    session["logged_in"] = False
+    flash("You have been logged out", "success")
+    return redirect("/")
 #-----------------------------------------------------------
 # Route for adding a thing, using data posted from a form
 #-----------------------------------------------------------
