@@ -278,14 +278,14 @@ def edit_campaign(id):
 #-----------------------------------------------------------
 # Route for deleting a campaign
 #-----------------------------------------------------------
-@app.get("/admin_confirm_delete/<int:id>")
-def confirm_delete(id):
+@app.get("/admin_confirm_delete_campaign/<int:id>")
+def confirm_delete_campaign(id):
     # Show confirmation template
     return render_template("pages/admin_confirm_delete.jinja", id=id)
 
 
 @app.post("/delete/<int:id>")
-def delete_a_thing(id):
+def delete_a_campaign(id):
     with connect_db() as client:
         sql = "DELETE FROM campaigns WHERE id=?"
         client.execute(sql, [id])
@@ -297,20 +297,20 @@ def delete_a_thing(id):
 #-----------------------------------------------------------
 # Route for deleting a DM
 #-----------------------------------------------------------
-@app.get("/admin_confirm_delete/<int:id>")
-def confirm_delete(id):
+@app.get("/admin_confirm_delete_dm/<int:id>")
+def confirm_delete_dm(id):
     # Show confirmation template
-    return render_template("pages/admin_confirm_delete.jinja", id=id)
+    return render_template("pages/admin_confirm_delete_dm.jinja", id=id)
 
 
-@app.post("/delete/<int:id>")
-def delete_a_thing(id):
+@app.post("/delete_dm/<int:id>")
+def delete_a_dm(id):
     with connect_db() as client:
-        sql = "DELETE FROM campaigns WHERE id=?"
+        sql = "DELETE FROM dms WHERE dm_id=?"
         client.execute(sql, [id])
 
-    flash("Campaign deleted", "success")
-    return redirect("/admin_view")
+    flash("Dungeon Master deleted", "success")
+    return redirect("/admin_dms")
 
 
 
