@@ -145,8 +145,6 @@ Testing deletion of a campaign by deleting a campaign
 
 ## Sprint Review
 
-Replace this text with a statement about how the sprint has moved the project forward - key success point, any things that didn't go so well, etc.
-
 This sprint went pretty great it has taken the project even closer to completion and allowed me to work out some kinks after testing 
 A key success point was being able to test the interface and see what worked and what didn't and needed tweaking, a limitation was having to use OBS to screen record on my computer at home as i couldn't get a decent gif recorder on linux and trying to do so wasted a lot of time.
 

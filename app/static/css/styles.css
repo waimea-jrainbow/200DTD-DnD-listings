@@ -159,6 +159,11 @@ ul{
     margin: 2rem auto;
     padding: 1rem;
     border-radius: 0.5rem;
+    
+}
+
+#campaign_specifics p{
+    color:black !important
 }
 
 #details_title{
