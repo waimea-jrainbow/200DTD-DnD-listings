@@ -11,12 +11,12 @@ WaiCol D&D - All dms
 <ul>
     {% for DM in DMs %}
     <li class="details">
-        <a href="/dm/{{ DM.id }}" class="link">
+        <a href="/dm/{{ DM.dm_id }}" class="link">
             <div id="name">{{ DM.dm_name }}</div>
             <div class="view">View</div>
         </a>
         <div class="edit-delete">
-            <a href="/show_edit/{{ DM.id }}">Edit</a> |
+            <a href="/show_edit_dm/{{ DM.dm_id }}">Edit</a> |
             <a href="/admin_confirm_delete_dm/{{ DM.dm_id }}">Delete</a>
         </div>
     </li>
@@ -33,7 +33,6 @@ WaiCol D&D - All dms
         <input type="text" name="dm_email" placeholder="DM email">
         <input type="text" name="dm_phone" placeholder="DM phone">
         <input type="text" name="dm_discord" placeholder="DM Discord">
-        <input type="text" name="dm_campaigns" placeholder="Current campaigns">
 
         <button>Submit</button>
     </form>

@@ -16,7 +16,7 @@ Flask Demo - All Things
 {% block content %}
 
 <h2>Are you sure you want to delete this Dungeon Master?</h2>
-<form method="POST" action="/delete_dm/{{ dm.dm_id }}">
+<form method="POST" action="/delete_dm/{{ id }}">
     <button type="submit">Yes, delete</button>
     <a type="button" href="/admin_dms">Cancel</a>
 </form>

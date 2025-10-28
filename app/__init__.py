@@ -41,15 +41,32 @@ ADMIN_PASS = getenv("ADMIN_PASS")
 @app.get("/")
 def show_all_things():
     with connect_db() as client:
-        # Get all the things from the DB
-        sql = "SELECT id, name, max_players, current_players, dm_name FROM campaigns ORDER BY name ASC"
+        # Get all the campaigns from the DB
+        sql =  """SELECT 
+                campaigns.id, 
+                campaigns.name, 
+                campaigns.max_players, 
+                campaigns.current_players, 
+                dms.dm_name
+            
+            FROM campaigns 
+            JOIN dms on campaigns.dm_id = dms.dm_id
+            ORDER BY campaigns.name ASC
+            """
         params = []
         result = client.execute(sql, params)
         campaigns = result.rows
 
-        # And show them on the page
-        return render_template("pages/user_home.jinja", campaigns=campaigns)
+        
 
+        # Did we get a result?
+        if result.rows:
+            # yes, so show it on the page
+            campaigns = result.rows
+            return render_template("pages/user_home.jinja", campaigns=campaigns)
+        else:
+            # No, so show error
+            return not_found_error()
 
 
 #-----------------------------------------------------------
@@ -59,7 +76,28 @@ def show_all_things():
 def show_one_campaign(id):
     with connect_db() as client:
         # Get the campaign details from the DB
-        sql = "SELECT id, name, max_players, current_players, dm_name, description, dm_email, current_level, dm_phone, dm_discord, docs_link1, docs_link2, docs_link3, docs_link4, docs_link5 FROM campaigns WHERE id=?"
+        sql = """
+            SELECT 
+                campaigns.id, 
+                campaigns.name, 
+                campaigns.max_players, 
+                campaigns.current_players, 
+                campaigns.description, 
+                campaigns.current_level, 
+                campaigns.docs_link1, 
+                campaigns.docs_link2, 
+                campaigns.docs_link3, 
+                campaigns.docs_link4, 
+                campaigns.docs_link5,
+                dms.dm_name, 
+                dms.dm_phone, 
+                dms.dm_email, 
+                dms.dm_discord
+            
+            FROM campaigns 
+            JOIN dms on campaigns.dm_id = dms.dm_id
+            WHERE id=?
+        """
         params = [id]
         result = client.execute(sql, params)
 
@@ -79,7 +117,7 @@ def show_one_campaign(id):
 def show_one_dm(id):
     with connect_db() as client:
         # Get the campaign details from the DB
-        sql = "SELECT dm_id, dm_name, dm_ email, dm_phone, dm_discord, dm_campaignsFROM campaigns WHERE id=?"
+        sql = "SELECT dm_id, dm_name, dm_email, dm_phone, dm_discord FROM dms WHERE dm_id=?"
         params = [id]
         result = client.execute(sql, params)
 
@@ -87,10 +125,19 @@ def show_one_dm(id):
         if result.rows:
             # yes, so show it on the page
             dm = result.rows[0]
-            return render_template("pages/user_dm.jinja", dm=dm)
+
+            # Get the campaign details from the DB
+            sql = "SELECT id, name FROM campaigns WHERE dm_id=?"
+            params = [id]
+            result = client.execute(sql, params)
+            campaigns = result.rows
+
+            return render_template("pages/user_dm.jinja", dm=dm, campaigns=campaigns)
+                                   
         else:
             # No, so show error
             return not_found_error()
+        
 
 
 #-----------------------------------------------------------
@@ -100,13 +147,18 @@ def show_one_dm(id):
 def show_all_admin():
     with connect_db() as client:
         # Get all the campaigns from the DB
-        sql = "SELECT id, name, current_players, max_players, description FROM campaigns ORDER BY name ASC"
+        sql = "SELECT id, name FROM campaigns ORDER BY name ASC"
         params = []
         result = client.execute(sql, params)
         campaigns = result.rows
 
+        sql = "SELECT dm_id, dm_name FROM dms"
+        params = []
+        result = client.execute(sql, params)
+        dms = result.rows
+
         # And show them on the page
-        return render_template("pages/admin_home.jinja", campaigns=campaigns)
+        return render_template("pages/admin_home.jinja", campaigns=campaigns, dms=dms)
 
 
 #-----------------------------------------------------------
@@ -162,13 +214,10 @@ def admin_logout():
 def add_a_campaign():
     # Get the data from the form
     name  = request.form.get("name")
-    dm_name = request.form.get("dm_name")
+    dm_id = request.form.get("dm_id")
     max_players = int(request.form.get("max_players"))
     current_players = int(request.form.get("current_players"))
     description = request.form.get("description")
-    dm_email = request.form.get("dm_email")
-    dm_phone = request.form.get("dm_phone")
-    dm_discord = request.form.get("dm_discord")
     current_level = request.form.get("current_level")
     docs_link1 = request.form.get("docs_link1")
     docs_link2 = request.form.get("docs_link2")
@@ -183,27 +232,22 @@ def add_a_campaign():
 
     # Sanitize the text inputs
     name = html.escape(name)
-    dm_name = html.escape(dm_name)
     description = html.escape(description)
-    dm_email = html.escape(dm_email)
-    dm_phone = html.escape(dm_phone)
-    dm_discord = html.escape(dm_discord)
     
     with connect_db() as client:
         # Add the campaign to the DB
         sql = """
             INSERT INTO campaigns 
-            (name, dm_name, max_players, current_players, description, dm_email, dm_phone, dm_discord, 
-             docs_link1, docs_link2, docs_link3, docs_link4, docs_link5, current_level)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            (name, dm_id, max_players, current_players, description, docs_link1, docs_link2, docs_link3, docs_link4, docs_link5, current_level)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
         """
-        params = [name, dm_name, max_players, current_players, description, dm_email, dm_phone, dm_discord, 
+        params = [name, dm_id, max_players, current_players, description,
                   docs_link1, docs_link2, docs_link3, docs_link4, docs_link5, current_level]
         client.execute(sql, params)
 
         # Go back to the home page
         flash(f"Campaign '{name}' added", "success")
-        return redirect("/admin_view")
+        return redirect("/admin_home")
 
 
 #-----------------------------------------------------------
@@ -214,10 +258,28 @@ def show_edit_campaign(id):
     with connect_db() as client:
         sql = "SELECT * FROM campaigns WHERE id=?"
         result = client.execute(sql, [id])
+        campaign = result.rows[0]
+        sql = "SELECT dm_id, dm_name FROM dms"
+        params = []
+        result = client.execute(sql, params)
+        dms = result.rows
+
+        # And show them on the page
+        return render_template("pages/admin_edit_campaign.jinja", campaign=campaign,  dms=dms)
+
+        
+#-----------------------------------------------------------
+# Route for showing the edit page for a dm
+#-----------------------------------------------------------
+@app.get("/show_edit_dm/<int:id>")
+def show_edit_dm(id):
+    with connect_db() as client:
+        sql = "SELECT * FROM dms WHERE dm_id=?"
+        result = client.execute(sql, [id])
 
         if result.rows:
-            campaign = result.rows[0]
-            return render_template("pages/admin_edit.jinja", campaign=campaign)
+            dm = result.rows[0]
+            return render_template("pages/admin_edit_dm.jinja", dm=dm)
         else:
             return not_found_error()
 
@@ -225,17 +287,14 @@ def show_edit_campaign(id):
 #-----------------------------------------------------------
 # Route for editing a campaign
 #-----------------------------------------------------------
-@app.post("/edit/<int:id>")
+@app.get("/edit/<int:id>")
 def edit_campaign(id):
     # Get the data from the form
     name  = request.form.get("name")
-    dm_name = request.form.get("dm_name")
+    dm_id = request.form.get("dm_id")
     max_players = request.form.get("max_players")
     current_players = request.form.get("current_players")
     description = request.form.get("description")
-    dm_email = request.form.get("dm_email")
-    dm_phone = request.form.get("dm_phone")
-    dm_discord = request.form.get("dm_discord")
     current_level = request.form.get("current_level")
     docs_link1 = request.form.get("docs_link1")
     docs_link2 = request.form.get("docs_link2")
@@ -245,11 +304,8 @@ def edit_campaign(id):
 
     # Sanitize text inputs
     name = html.escape(name)
-    dm_name = html.escape(dm_name)
+    dm_id = html.escape(dm_id)
     description = html.escape(description)
-    dm_email = html.escape(dm_email)
-    dm_phone = html.escape(dm_phone)
-    dm_discord = html.escape(dm_discord)
     docs_link1 = html.escape(docs_link1)
     docs_link2 = html.escape(docs_link2)
     docs_link3 = html.escape(docs_link3)
@@ -259,11 +315,10 @@ def edit_campaign(id):
     with connect_db() as client:
         sql = """
             UPDATE campaigns
-            SET name=?, dm_name=?, max_players=?, current_players=?, description=?, dm_email=?, dm_phone=?, 
-                dm_discord=?, current_level=?, docs_link1=?, docs_link2=?, docs_link3=?, docs_link4=?, docs_link5=?
+            SET name=?, dm_id=?, max_players=?, current_players=?, description=?, current_level=?, docs_link1=?, docs_link2=?, docs_link3=?, docs_link4=?, docs_link5=?
             WHERE id=?
         """
-        params = [name, dm_name, max_players, current_players, description, dm_email, dm_phone, dm_discord, 
+        params = [name, dm_id, max_players, current_players, description,
                   current_level, docs_link1, docs_link2, docs_link3, docs_link4, docs_link5, id]
         client.execute(sql, params)
     
@@ -272,8 +327,41 @@ def edit_campaign(id):
         return redirect(f"/show_edit/{id}")
     
     flash(f"Campaign '{name}' updated successfully!", "success")
-    return redirect("/admin_view")
+    return redirect("/admin_home")
 
+#-----------------------------------------------------------
+# Route for editing a dm
+#-----------------------------------------------------------
+@app.post("/edit_dm/<int:id>")
+def edit_dm(id):
+    # Get the data from the form
+    dm_name = request.form.get("dm_name")
+    dm_email = request.form.get("dm_email")
+    dm_phone = request.form.get("dm_phone")
+    dm_discord = request.form.get("dm_discord")
+    dm_campaigns = request.form.get("dm_campaigns")
+
+
+    # Sanitize text inputs
+    dm_name = html.escape(dm_name)
+    dm_email = html.escape(dm_email)
+    dm_phone = html.escape(dm_phone)
+    dm_discord = html.escape(dm_discord)
+    dm_campaigns = html.escape(dm_campaigns)
+    
+
+    with connect_db() as client:
+        sql = """
+            UPDATE dms
+            SET dm_name=?, dm_email=?, dm_phone=?, dm_discord=?, dm_campaigns=? 
+            WHERE dm_id=?
+        """
+        params = [dm_name, dm_email, dm_phone, dm_discord, dm_campaigns, id]
+        client.execute(sql, params)
+    
+    
+    flash(f"Campaign '{dm_name}' updated successfully!", "success")
+    return redirect("/admin_dms")
 
 #-----------------------------------------------------------
 # Route for deleting a campaign
@@ -291,7 +379,7 @@ def delete_a_campaign(id):
         client.execute(sql, [id])
 
     flash("Campaign deleted", "success")
-    return redirect("/admin_view")
+    return redirect("/admin_home")
 
 
 #-----------------------------------------------------------
@@ -341,23 +429,21 @@ def add_a_dm():
     dm_email = request.form.get("dm_email")
     dm_phone = request.form.get("dm_phone")
     dm_discord = request.form.get("dm_discord")
-    dm_campaigns = request.form.get("dm_campaigns")
     
 
     # Sanitize the text inputs
     dm_name = html.escape(dm_name)
     dm_email = html.escape(dm_email)
     dm_discord = html.escape(dm_discord)
-    dm_campaigns = html.escape(dm_campaigns)
     
     with connect_db() as client:
         # Add the campaign to the DB
         sql = """
             INSERT INTO dms
-            (dm_name, dm_email, dm_phone, dm_discord, dm_campaigns)
-            VALUES (?, ?, ?, ?, ?)
+            (dm_name, dm_email, dm_phone, dm_discord)
+            VALUES (?, ?, ?, ?)
         """
-        params = [dm_name, dm_email, dm_phone, dm_discord, dm_campaigns]
+        params = [dm_name, dm_email, dm_phone, dm_discord]
         client.execute(sql, params)
 
         # Go back to the home page

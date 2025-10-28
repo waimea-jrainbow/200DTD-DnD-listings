@@ -1,0 +1,44 @@
+{#=====================================================
+Things list page
+- List of things passed in as 'things' array
+- Form for adding a new thing
+=====================================================#}
+
+{% extends 'pages/base.jinja' %}
+
+
+{% block title %}
+
+Flask Demo - All Things
+
+{% endblock %}
+
+{% block content %}
+
+
+        
+
+
+
+
+<h1>Edit Campaign</h1>
+<form method="POST" action="/edit_dm/{{ dm.dm_id }}">
+  <label>DM Name</label>
+  <input type="text" name="dm_name" value="{{ dm.dm_name }}" required>
+
+  <label>DM email</label>
+  <input type="text" name="dm_email" value="{{ dm.dm_email }}" required>
+
+  <label>DM phone</label>
+  <input type="number" name="dm_phone" value="{{ dm.dm_phone }}" required>
+
+  <label>DM discord</label>
+  <input type="text" name="dm_discord" value="{{ dm.dm_discord }}" required>
+
+
+
+  <button type="submit" role="button">Save Changes</button>
+</form>
+<a href="/admin_dms" role="button">Cancel</a>
+
+{% endblock %}

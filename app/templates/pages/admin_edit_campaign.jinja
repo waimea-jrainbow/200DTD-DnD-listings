@@ -1,0 +1,57 @@
+{#=====================================================
+Edit campaign page
+#
+#
+#=====================================================#}
+
+{% extends 'pages/base.jinja' %}
+
+
+{% block title %}
+
+Flask Demo - All Things
+
+{% endblock %}
+
+{% block content %}
+
+<h1>Edit Campaign</h1>
+<form method="GET" action="/edit/{{ campaign.id }}">
+  <label>Name</label>
+  <input type="text" name="name" value="{{ campaign.name }}" required>
+
+<label>Dungeon Master</label>
+  <select name="dm_id" required>
+    {% for dm in dms %}
+    <option value="{{ dm.dm_id}}" {{ 'selected' if dm.dm_id==campaign.dm_id }}>{{ dm.dm_name }}</option>
+    {% else %}
+    <option value="None" disabled selected>No DMs defined! Add some first</option>
+    {% endfor %}
+  </select>
+  
+  <label>Max Players</label>
+  <input type="number" name="max_players" value="{{ campaign.max_players }}" required>
+
+  <label>Current Players</label>
+  <input type="number" name="current_players" value="{{ campaign.current_players }}" required>
+
+  <label>Description</label>
+  <input type="text" name="description" value="{{ campaign.description }}" required>
+
+  <label>Current level:</label>
+  <input type="number" name="current_level" value="{{ campaign.current_level }}">
+
+  <label>current documents e.g. middle earth | https://docs.google.com/document/d/docID</label>
+  <input type="text" name="docs_link1" value="{{ campaign.docs_link1 }}" placeholder="Document name|Document link">
+  <input type="text" name="docs_link2" value="{{ campaign.docs_link2 }}" placeholder="Document name|Document link">
+  <input type="text" name="docs_link3" value="{{ campaign.docs_link3 }}" placeholder="Document name|Document link">
+  <input type="text" name="docs_link4" value="{{ campaign.docs_link4 }}" placeholder="Document name|Document link">
+  <input type="text" name="docs_link5" value="{{ campaign.docs_link5 }}" placeholder="Document name|Document link">
+
+
+
+  <button type="submit" role="button">Save Changes</button>
+</form>
+<a href="/admin_view" role="button">Cancel</a>
+
+{% endblock %}

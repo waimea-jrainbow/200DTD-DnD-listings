@@ -23,9 +23,9 @@ Dnd listings - {{ campaign.name }}
     <p><strong>DM:</strong> {{ campaign.dm_name }}</p>
     <p><strong>Players:</strong> {{ campaign.current_players }}/{{ campaign.max_players }}</p>
     <p><strong>Description:</strong> {{ campaign.description }}</p>
-    <p><strong>Email: </strong>{{ campaign.dm_email }}</p>
-    <p><strong>Phone: </strong>{{ campaign.dm_phone }}</p>
-    <p><strong>Discord: </strong>{{ campaign.dm_discord }}</p>
+    <p><strong>DM Email: </strong>{{ campaign.dm_email }}</p>
+    <p><strong>DM Phone: </strong>{{ campaign.dm_phone }}</p>
+    <p><strong>DM Discord: </strong>{{ campaign.dm_discord }}</p>
     <p><strong>Current level: </strong>{{ campaign.current_level }}</p>
     <div id="">
         <p><strong>Current documents:</strong></p>
@@ -49,7 +49,7 @@ Dnd listings - {{ campaign.name }}
 </article>
 <div id="back_button_container">
     {% if session["logged_in"] %}
-    <a id="back_button" href="/admin_view" role="button">Back to campaign list</a>
+    <a id="back_button" href="/admin_home" role="button">Back to campaign list</a>
     {% else %}
     <a id="back_button" href="/" role="button">Back to campaign list</a>
     {% endif %}

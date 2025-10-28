@@ -9,51 +9,35 @@ Campaign page
 
 {% block title %}
 
-Dnd listings - {{ DM.name }}
+Dnd listings - {{ dm.name }}
 
 {% endblock %}
 
 
 {% block content %}
 
-<h1 id="details_title">{{ campaign.name }}</h1>
+<h1 id="details_title">{{ dm.dm_name }}</h1>
 
 
 <article id="campaign_specifics">
-    <p><strong>DM:</strong> {{ campaign.dm_name }}</p>
-    <p><strong>Players:</strong> {{ campaign.current_players }}/{{ campaign.max_players }}</p>
-    <p><strong>Description:</strong> {{ campaign.description }}</p>
-    <p><strong>Dm contact info:</strong></p>
-    <p><strong>Email: </strong>{{ campaign.dm_email }}</p>
-    <p><strong>Phone: </strong>{{ campaign.dm_phone }}</p>
-    <p><strong>Discord: </strong>{{ campaign.dm_discord }}</p>
-    <p><strong>Current level: </strong>{{ campaign.current_level }}</p>
-    <div id="">
-        <p><strong>Current documents:</strong></p>
-        {% set docs = [campaign.docs_link1, campaign.docs_link2, campaign.docs_link3, campaign.docs_link4,
-        campaign.docs_link5] %}
-
-        {% for doc in docs %}
-        {% if doc %}
-        <p>
-            <a role="button" href="{{ doc }}" target="_blank" class="btn btn-primary">
-                Document {{ loop.index }}
-            </a>
-        </p>
+    <p><strong>DM:</strong> {{ dm.dm_name }}</p>
+    <p><strong>Email:</strong> {{ dm.dm_email }}</p>
+    <p><strong>Phone:</strong> {{ dm.dm_phone }}</p>
+    <p><strong>Discord:</strong> {{ dm.dm_discord }}</p>
+    <p><strong>Campaigns:</strong>
+        <ul>
+        {% for campaign in campaigns %}
+            <li>{{ campaign.name }}</li>
         {% else %}
-        <p>No {{ loop.index }} document provided</p>
-        {% endif %}
+            <li>No campaigns assigned</li>
         {% endfor %}
-    </div>
-
-
+        </ul>
+    </p>
 </article>
-<div id="back_button_container">
-    {% if session["logged_in"] %}
-    <a id="back_button" href="/admin_view" role="button">Back to campaign list</a>
-    {% else %}
-    <a id="back_button" href="/" role="button">Back to campaign list</a>
-    {% endif %}
-</div>
+
+
+<a id="back_button" href="/admin_dms" role="button">Back to DM list</a>
+    
+
 
 {% endblock %}

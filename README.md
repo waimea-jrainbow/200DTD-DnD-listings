@@ -19,6 +19,7 @@ This project will allow members of the schools DnD club to see what campaigns ar
 
 - [GitHub repo for the project](https://github.com/waimea-jrainbow/200DTD-DnD-listings)
 - [Live web app](https://two00dtd-dnd-listings.onrender.com)
+(https://www.waicoldnd.club/)
 - [Project Documentation](https://waimea-jrainbow.github.io/200DTD-DnD-listings/)
 ---
 
