@@ -2,188 +2,219 @@
   User stylesheet - Building upon PicoCSS
 =====================================================*/
 
-
 /* ABOUT PAGE -------------------------------------------- */
 
 #tech-stack {
-    display: flex;
-    gap: 1rem;
-    align-items: flex-start;
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
 }
 
 #tech-stack article {
-    flex: 1;
+  flex: 1;
 }
-
 
 /* MESSAGES -------------------------------------------- */
 
 #messages ul {
-    width: fit-content;
-    margin: 2rem auto;
-    padding: 0;
+  width: fit-content;
+  margin: 2rem auto;
+  padding: 0;
 }
 
 #messages .message {
-    list-style: none;
-    text-align: center;
-    margin-bottom: 1rem;
+  list-style: none;
+  text-align: center;
+  margin-bottom: 1rem;
 }
 
-#messages .message.success { 
-    color: var(--pico-color-green-500); 
-    background-color: #3d3d3d; 
-    padding: 10px;
-    border-radius: 10px;
+#messages .message.success {
+  color: var(--pico-color-green-500);
+  background-color: #3d3d3d;
+  padding: 10px;
+  border-radius: 10px;
 }
 
-
-#messages .message.error   { 
-    color: var(--pico-color-red-500); 
-    background-color: #3d3d3d;
-    padding: 10px;
-    border-radius: 10px;
+#messages .message.error {
+  color: var(--pico-color-red-500);
+  background-color: #3d3d3d;
+  padding: 10px;
+  border-radius: 10px;
 }
 
 /* MAIN COMPONENTS -------------------------------------------- */
-#logo{
-    height: 6vh;
-    width: 6vh;
+#logo {
+  height: 6vh;
+  width: 6vh;
 }
 
-nav{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem;
-    background-color: #d9d9d9;
-    width: 100vw; 
-    margin-left: calc(-50vw + 50%);  
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background-color: #7a1e1e;
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  border-bottom: 5px solid #d69039;
 }
 
-#header{
-    padding:0;
+#header {
+  padding: 0;
 }
 
-#main{
-    background-color: #3d3d3d;
-    margin-top: 1rem;
-    max-width: 95%;
-    padding: 1rem;
+#main {
+  background-color: #3d3d3d;
+  margin-top: 1rem;
+  max-width: 95%;
+  padding: 1rem;
+  border-radius: 1rem;
 }
 
-html{
-    background-color: #7C7C7C;
-}
-
-#h1,p,a{
-    color:#E6E6E6;
-}
-
-a{
-    text-decoration: none;
+html {
+  background-color: #7c7c7c;
 }
 
 
-p, label, h2 {
+#nav_title {
+  margin-bottom: 0;
+  font-size: 40px;
+  color: white;
+  font-style: normal;
+  font-weight: 700;
+}
+
+#confirm_form {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+}
+
+.dm_campaigns_list li{
     color: white !important;
+    list-style: disc !important;
 }
 
+
+
+#confirm_title {
+  display: flex;
+  justify-content: center;
+}
+
+#button_width {
+  width: fit-content;
+}
+
+a {
+  text-decoration: none;
+}
+
+p,
+label,
+h2,
+main h1,
+a,
+h3{
+  color: white !important;
+}
 
 /* LISTINGS -------------------------------------------- */
 .details {
-    display: flex;
-    background-color: #7c7c7c;
-    padding: 0.6rem;
-    border-radius: 0.5rem;
-    font-size: 20px;
-    border-color: black;
-    
+  display: flex;
+  background-color: #7c7c7c;
+  padding: 0.6rem;
+  border-radius: 0.5rem;
+  font-size: 20px;
+  border-color: black !important;
+  background-color: #5c5c5c !important;
 }
 
-#name {
-    background-color: #7c7c7c;
-    border-color: black;
+.name {
+  border-color: black;
 }
 
 .details:hover {
-    background-color: #5c5c5c;
+  background-color: #5c5c5c;
 }
 
 .link {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 2rem;
-    width: 100%;
-    color:white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+  width: 100%;
+  color: white;
 }
 
 .view {
-    white-space: nowrap;
-    font-weight: bold;
+  white-space: nowrap;
+  font-weight: bold;
 }
-  
+
 .name :hover {
-    background-color: red;
+  background-color: red;
 }
 
-.edit-delete{
-    padding-left: 20px;
-}
-
-
-ul{
-    list-style-type: none;
-    padding: 0;
-    margin:1rem;
+.edit-delete {
+  padding-left: 20px;
+  padding-right: 20px;
+  align-items: center;
+  display: flex;
+  gap: 1rem;
 }
 
 
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 1rem;
+}
+
+article {
+  background-color: transparent !important;
+}
+
+.edit-delete p {
+  margin-bottom: 0 !important;
+}
 
 /* ADD CAMPAIGN -------------------------------------------- */
 
-#add_campaign {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    max-width: 600px;
-    margin: 2rem auto;
-    padding: 1rem;
-    border-radius: 0.5rem;
+#add_campaign,
+#add_dm {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 1rem;
+  border-radius: 0.5rem;
 }
-
 
 /* CAMPAIGN DETAIL VIEW -------------------------------------------- */
-#campaign_specifics{
-    max-width: 800px;
-    margin: 2rem auto;
-    padding: 1rem;
-    border-radius: 0.5rem;
-    
+#campaign_specifics {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  background-color: #7c7c7c !important;
 }
 
-#campaign_specifics p{
-    color:black !important
+#details_title {
+  text-align: center;
+  margin-bottom: 1rem;
+  color: white;
 }
 
-#details_title{
-    text-align: center;
-    margin-bottom: 1rem;
-    color: white;
+#back_button_container {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
-#back_button_container{
-    display: flex;
-    justify-content: center;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
+#back_button {
+  text-align: center;
+  width: 20rem;
 }
-
-#back_button{
-    text-align: center;
-    width: 20rem;
-    
-    
-}
-

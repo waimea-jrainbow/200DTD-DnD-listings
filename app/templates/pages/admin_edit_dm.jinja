@@ -16,7 +16,7 @@ Flask Demo - All Things
 {% block content %}
 
 
-        
+
 
 
 
@@ -35,10 +35,9 @@ Flask Demo - All Things
   <label>DM discord</label>
   <input type="text" name="dm_discord" value="{{ dm.dm_discord }}" required>
 
-
-
-  <button type="submit" role="button">Save Changes</button>
+  <button type="submit" id="button_width">Save Changes</button>
+  <a href="/admin_dms" role="button">Cancel</a>
 </form>
-<a href="/admin_dms" role="button">Cancel</a>
+
 
 {% endblock %}

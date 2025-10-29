@@ -9,7 +9,7 @@ Campaign page
 
 {% block title %}
 
-Dnd listings - {{ dm.name }}
+Dnd listings - {{ dm.dm_name }}
 
 {% endblock %}
 
@@ -20,24 +20,26 @@ Dnd listings - {{ dm.name }}
 
 
 <article id="campaign_specifics">
+    <h3>DM details</h3>
     <p><strong>DM:</strong> {{ dm.dm_name }}</p>
     <p><strong>Email:</strong> {{ dm.dm_email }}</p>
     <p><strong>Phone:</strong> {{ dm.dm_phone }}</p>
     <p><strong>Discord:</strong> {{ dm.dm_discord }}</p>
     <p><strong>Campaigns:</strong>
-        <ul>
+    <ul class="dm_campaigns_list">
         {% for campaign in campaigns %}
-            <li>{{ campaign.name }}</li>
+        <li>{{ campaign.name }}</li>
         {% else %}
-            <li>No campaigns assigned</li>
+        <li>No campaigns assigned</li>
         {% endfor %}
-        </ul>
-    </p>
+    </ul>
+    
 </article>
 
+<div id="back_button_container">
+    <a id="button_width" href="/admin_dms" role="button">Back to DM list</a>
+</div>
 
-<a id="back_button" href="/admin_dms" role="button">Back to DM list</a>
-    
 
 
 {% endblock %}

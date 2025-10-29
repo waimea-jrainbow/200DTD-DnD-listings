@@ -10,13 +10,14 @@ Flask Demo - All Campaigns
 
 <ul>
     {% for campaign in campaigns %}
-    <li class="details">
+    <li class="details" role="button">
         <a href="/campaign/{{ campaign.id }}" class="link">
-            <div id="name">{{ campaign.name }}</div>
-            <div class="view">View</div>
+            <div class="name">{{ campaign.name }}</div>
+            <div class="view">Click to view |</div>
         </a>
         <div class="edit-delete">
-            <a href="/show_edit/{{ campaign.id }}">Edit</a> |
+            <a href="/show_edit/{{ campaign.id }}">Edit</a> 
+            <p>|</p>
             <a href="/admin_confirm_delete_campaign/{{ campaign.id }}">Delete</a>
         </div>
     </li>
@@ -29,7 +30,9 @@ Flask Demo - All Campaigns
     <summary role="button">Add a new campaign</summary>
     <form action="/add" method="POST">
         <input type="text" name="name" placeholder="Name of new campaign" required>
+        <p>DM name:</p>
         <select name="dm_id" required>
+            <option value="" disabled selected>Select a DM...</option>
             {% for dm in dms %}
             <option value="{{ dm.dm_id}}">{{ dm.dm_name }}</option>
             {% else %}
@@ -40,12 +43,12 @@ Flask Demo - All Campaigns
         <input type="number" name="current_players" placeholder="Current players" required min="0">
         <input type="text" name="description" placeholder="Description">
         <input type="number" name="current_level" placeholder="Current party level">
-        <p>Current documents (e.g., Middle Earth|https://docs.google.com/...)</p>
-        <input type="text" name="docs_link1" placeholder="Document name|Link">
-        <input type="text" name="docs_link2" placeholder="Document name|Link">
-        <input type="text" name="docs_link3" placeholder="Document name|Link">
-        <input type="text" name="docs_link4" placeholder="Document name|Link">
-        <input type="text" name="docs_link5" placeholder="Document name|Link">
+        <p>Current documents:</p>
+        <input type="text" name="docs_link1" placeholder="Link to document here">
+        <input type="text" name="docs_link2" placeholder="Link to document here">
+        <input type="text" name="docs_link3" placeholder="Link to document here">
+        <input type="text" name="docs_link4" placeholder="Link to document here">
+        <input type="text" name="docs_link5" placeholder="Link to document here">
 
         <button>Submit</button>
     </form>

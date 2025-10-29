@@ -14,13 +14,15 @@ Flask Demo - All Things
 {% endblock %}
 
 {% block content %}
-
-<h2>Are you sure you want to logout?</h2>
-<form method="POST" action="/logout">
-    <button type="submit">Yes</button>
-    <a type="button" href="/admin_view">Cancel</a>
-</form>
-
+<div id="confirm_title">
+    <h2>Are you sure you want to logout?</h2>
+</div>
+<div id="confirm_form">
+    <form method="POST" action="/logout">
+        <button id="button_width" type="submit">Yes, logout</button>
+        <a role="button" href="/admin_home">Cancel</a>
+    </form>
+</div>
 
 
 {% endblock %}

@@ -10,9 +10,9 @@ WaiCol D&D - All dms
 
 <ul>
     {% for DM in DMs %}
-    <li class="details">
+    <li class="details" role="button">
         <a href="/dm/{{ DM.dm_id }}" class="link">
-            <div id="name">{{ DM.dm_name }}</div>
+            <div class="name">{{ DM.dm_name }}</div>
             <div class="view">View</div>
         </a>
         <div class="edit-delete">
