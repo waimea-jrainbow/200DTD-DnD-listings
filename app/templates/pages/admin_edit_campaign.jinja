@@ -20,7 +20,7 @@ Flask Demo - All Things
   <label>Name</label>
   <input type="text" name="name" value="{{ campaign.name }}" required>
 
-<label>Dungeon Master</label>
+  <label>Dungeon Master</label>
   <select name="dm_id" required>
     {% for dm in dms %}
     <option value="{{ dm.dm_id}}" {{ 'selected' if dm.dm_id==campaign.dm_id }}>{{ dm.dm_name }}</option>
@@ -28,7 +28,7 @@ Flask Demo - All Things
     <option value="None" disabled selected>No DMs defined! Add some first</option>
     {% endfor %}
   </select>
-  
+
   <label>Max Players</label>
   <input type="number" name="max_players" value="{{ campaign.max_players }}" required>
 
@@ -50,8 +50,10 @@ Flask Demo - All Things
 
 
 
-  <button type="submit" role="button">Save Changes</button>
+  <button type="submit" id="button_width">Save Changes</button>
+  <a href="/admin_home" role="button">Cancel</a>
 </form>
-<a href="/admin_home" role="button">Cancel</a>
+
+
 
 {% endblock %}

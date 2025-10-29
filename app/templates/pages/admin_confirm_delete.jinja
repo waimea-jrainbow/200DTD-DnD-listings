@@ -14,12 +14,16 @@ Flask Demo - All Things
 {% endblock %}
 
 {% block content %}
+<div id="confirm_title">
+    <h2>Are you sure you want to delete this campaign?</h2>
+</div>
 
-<h2>Are you sure you want to delete this campaign?</h2>
-<form method="POST" action="/delete/{{ id }}">
-    <button type="submit">Yes, delete</button>
-    <a type="button" href="/admin_view">Cancel</a>
-</form>
+<div id="confirm_form">
+    <form method="POST" action="/delete/{{ id }}">
+        <button type="submit" id="button_width">Yes, delete</button>
+        <a role="button" href="/admin_home">Cancel</a>
+    </form>
+</div>
 
 
 

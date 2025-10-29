@@ -11,11 +11,11 @@ DnD Listings
 
 <ul>
     {% for campaign in campaigns %}
-    <li class="details">
+    <li class="details" role="button">
         <a href="/campaign/{{ campaign.id }}" class="link">
-            <div id="name">{{ campaign.name }} - DM: {{ campaign.dm_name }} - Players - ({{ campaign.current_players
+            <div class="name">{{ campaign.name }} - DM: {{ campaign.dm_name }} - Players - ({{ campaign.current_players
                 }}/{{ campaign.max_players }})</div>
-            <div class="view">View</div>
+            <div class="view">Click to view</div>
         </a>
     </li>
     {% else %}
