@@ -61,135 +61,82 @@ Testing campaign details, I tested this by using the interfaces and getting my s
 
 ## Testing logging in as admin
 
-Replace this text with notes about what you are testing, how you tested it, and the outcome of the testing
+Tested logging in as admin by logging in and getting end-user to log in
 
-![SCREENSHOT OF TESTING](screenshots/refined_admin_login_test.gif)
-
-### Changes / Improvements
-
-Replace this text with notes any improvements you made as a result of the testing.
-
-**PLACE SCREENSHOTS AND/OR ANIMATED GIFS OF THE IMPROVED SYSTEM HERE**
+![GIF OF TESTING](screenshots/refined_admin_login_test.gif)
 
 
 ---
 
 ## Testing logging out from admin
 
-Replace this text with notes about what you are testing, how you tested it, and the outcome of the testing
+Tested logging out from admin by logging out and getting end-user to log out
 
-**PLACE SCREENSHOTS AND/OR ANIMATED GIFS OF THE TESTING HERE**
-
-### Changes / Improvements
-
-Replace this text with notes any improvements you made as a result of the testing.
-
-**PLACE SCREENSHOTS AND/OR ANIMATED GIFS OF THE IMPROVED SYSTEM HERE**
+![GIF OF TESTING](screenshots/refined_admin_logout_test.gif)
 
 
 ---
 
 ## Testing adding campaign
 
-Replace this text with notes about what you are testing, how you tested it, and the outcome of the testing
+Tested adding a new campaign by adding a campaign using test data and getting my end-user to do the same
 
-**PLACE SCREENSHOTS AND/OR ANIMATED GIFS OF THE TESTING HERE**
-
-### Changes / Improvements
-
-Replace this text with notes any improvements you made as a result of the testing.
-
-**PLACE SCREENSHOTS AND/OR ANIMATED GIFS OF THE IMPROVED SYSTEM HERE**
-
+![GIF OF TESTING](screenshots/refined_add_campaign_test.gif)
 
 ---
 
 ## Testing editing campaign
 
-Replace this text with notes about what you are testing, how you tested it, and the outcome of the testing
+Tested editing a campaign by editing the name of a pre-existing campaign and getting my end-user to do the same
 
-**PLACE SCREENSHOTS AND/OR ANIMATED GIFS OF THE TESTING HERE**
-
-### Changes / Improvements
-
-Replace this text with notes any improvements you made as a result of the testing.
-
-**PLACE SCREENSHOTS AND/OR ANIMATED GIFS OF THE IMPROVED SYSTEM HERE**
-
+![GIF OF TESTING](screenshots/refined_edit_campaign_test.gif)
 
 ---
 
 ## Testing deleting campaign
 
-Replace this text with notes about what you are testing, how you tested it, and the outcome of the testing
+Tested deleting campaign by deleting a pre-existing campaign and getting my end-user to do the same
 
-**PLACE SCREENSHOTS AND/OR ANIMATED GIFS OF THE TESTING HERE**
-
-### Changes / Improvements
-
-Replace this text with notes any improvements you made as a result of the testing.
-
-**PLACE SCREENSHOTS AND/OR ANIMATED GIFS OF THE IMPROVED SYSTEM HERE**
-
+![GIF OF TESTING](screenshots/refined_delete_campaign_test.gif)
 
 ---
 
 ## Testing DM view
 
-Replace this text with notes about what you are testing, how you tested it, and the outcome of the testing
+Tested viewing DM list by going to the DM page and getting my end-user to test how easy it is to get specific information from it
 
-**PLACE SCREENSHOTS AND/OR ANIMATED GIFS OF THE TESTING HERE**
-
-### Changes / Improvements
-
-Replace this text with notes any improvements you made as a result of the testing.
-
-**PLACE SCREENSHOTS AND/OR ANIMATED GIFS OF THE IMPROVED SYSTEM HERE**
-
+![SCREENSHOT OF TESTING](screenshots/refined_dm_view_test.png)
 
 ---
 
 ## Testing adding DM
 
-Replace this text with notes about what you are testing, how you tested it, and the outcome of the testing
+Tested adding a new DM by entering test data and getting end-user to do the same
 
-**PLACE SCREENSHOTS AND/OR ANIMATED GIFS OF THE TESTING HERE**
-
-### Changes / Improvements
-
-Replace this text with notes any improvements you made as a result of the testing.
-
-**PLACE SCREENSHOTS AND/OR ANIMATED GIFS OF THE IMPROVED SYSTEM HERE**
-
+![GIF OF TESTING](screenshots/refined_add_dm_test.gif)
 
 ---
 
 ## Testing editing DM
 
-Replace this text with notes about what you are testing, how you tested it, and the outcome of the testing
+Tested editing a DM by changing the name of a pre-existing DM and getting my end-user to do the same
 
-**PLACE SCREENSHOTS AND/OR ANIMATED GIFS OF THE TESTING HERE**
+![GIF OF TESTING](screenshots/refined_edit_dm_test.gif)
 
 ### Changes / Improvements
 
-Replace this text with notes any improvements you made as a result of the testing.
+Changed DM discord to not be required as not all DMs will have discord 
 
-**PLACE SCREENSHOTS AND/OR ANIMATED GIFS OF THE IMPROVED SYSTEM HERE**
+![GIF OF CHANGES](screenshots/refined_edit_dm_change.gif)
 
 
 ---
 
-## Testing deleting campaign
+## Testing deleting DM
 
-Replace this text with notes about what you are testing, how you tested it, and the outcome of the testing
+Tested deleting a DM by deleting a pre-existing DM and getting my end-user to do the same
 
-**PLACE SCREENSHOTS AND/OR ANIMATED GIFS OF THE TESTING HERE**
-
-### Changes / Improvements
-
-Replace this text with notes any improvements you made as a result of the testing.
-
-**PLACE SCREENSHOTS AND/OR ANIMATED GIFS OF THE IMPROVED SYSTEM HERE**
+![GIF OF CHANGES](screenshots/refined_delete_dm_test.gif)
 
 
 ---
@@ -197,7 +144,7 @@ Replace this text with notes any improvements you made as a result of the testin
 
 ## Testing through validating code
 
-I validated all of my HTML by loading up the page and copying the resultant sourcecode
+I validated all of my HTML by loading up the page and copying the resultant sourcecode into https://validator.w3.org/#validate_by_input
 
 ![SCREENSHOT OF VALIDATION](screenshots/validation_1.png)
 
@@ -239,8 +186,13 @@ DM edit:
 
 ---
 
+I validated all of my CSS by copying styles.css into https://validator.w3.org/#validate_by_input
+
+![SCREENSHOT OF VALIDATION](screenshots/validation_2.png)
+
+However there were no errors but I made sure to go through and clean up my CSS
 
 ## Sprint Review
 
-Replace this text with a statement about how the sprint has moved the project forward - key success point, any things that didn't go so well, etc.
 
+This sprint went well the testing of the refined system let me work out any last kinks in the code and Validating all my work allowed me to follow convention and to reinforce my code further. Something that didn't go very well was me having little to change across sprint 2 to 3 as much of the needed changes were already done 
