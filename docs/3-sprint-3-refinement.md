@@ -18,13 +18,19 @@ changed from player details to dm details
 
 will now need to add page for adding dm details on admin page
 
+![SCREENSHOT OF DB SCHEMA](screenshots/final_final_schema.png)
+
 ---
 
 ## Final Implementation
 
 The web app is fully implemented with a refined UI:
 
-**PLACE SCREENSHOTS AND/OR ANIMATED GIFS OF THE SYSTEM HERE**
+![SCREENSHOT OF IMPLEMENTATION](screenshots/final_implementation/1.png)
+![SCREENSHOT OF IMPLEMENTATION](screenshots/final_implementation/2.gif)
+![SCREENSHOT OF IMPLEMENTATION](screenshots/final_implementation/3.png)
+![SCREENSHOT OF IMPLEMENTATION](screenshots/final_implementation/4.png)
+![SCREENSHOT OF IMPLEMENTATION](screenshots/final_implementation/5.png)
 
 
 ---

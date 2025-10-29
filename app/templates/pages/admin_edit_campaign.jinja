@@ -16,7 +16,7 @@ Flask Demo - All Things
 {% block content %}
 
 <h1>Edit Campaign</h1>
-<form method="GET" action="/edit/{{ campaign.id }}">
+<form method="POST" action="/edit/{{ campaign.id }}">
   <label>Name</label>
   <input type="text" name="name" value="{{ campaign.name }}" required>
 
@@ -41,17 +41,17 @@ Flask Demo - All Things
   <label>Current level:</label>
   <input type="number" name="current_level" value="{{ campaign.current_level }}">
 
-  <label>current documents e.g. middle earth | https://docs.google.com/document/d/docID</label>
-  <input type="text" name="docs_link1" value="{{ campaign.docs_link1 }}" placeholder="Document name|Document link">
-  <input type="text" name="docs_link2" value="{{ campaign.docs_link2 }}" placeholder="Document name|Document link">
-  <input type="text" name="docs_link3" value="{{ campaign.docs_link3 }}" placeholder="Document name|Document link">
-  <input type="text" name="docs_link4" value="{{ campaign.docs_link4 }}" placeholder="Document name|Document link">
-  <input type="text" name="docs_link5" value="{{ campaign.docs_link5 }}" placeholder="Document name|Document link">
+  <label>current documents:</label>
+  <input type="text" name="docs_link1" value="{{ campaign.docs_link1 }}" placeholder="Link to document here">
+  <input type="text" name="docs_link2" value="{{ campaign.docs_link2 }}" placeholder="Link to document here">
+  <input type="text" name="docs_link3" value="{{ campaign.docs_link3 }}" placeholder="Link to document here">
+  <input type="text" name="docs_link4" value="{{ campaign.docs_link4 }}" placeholder="Link to document here">
+  <input type="text" name="docs_link5" value="{{ campaign.docs_link5 }}" placeholder="Link to document here">
 
 
 
   <button type="submit" role="button">Save Changes</button>
 </form>
-<a href="/admin_view" role="button">Cancel</a>
+<a href="/admin_home" role="button">Cancel</a>
 
 {% endblock %}

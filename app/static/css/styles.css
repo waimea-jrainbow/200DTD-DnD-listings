@@ -56,9 +56,11 @@ nav{
     justify-content: space-between;
     align-items: center;
     padding: 1rem;
-    background-color: #d9d9d9;
+    background-color: #7a1e1e;
     width: 100vw; 
     margin-left: calc(-50vw + 50%);  
+    border-bottom: 5px solid #d69039;
+    
 }
 
 #header{
@@ -70,14 +72,20 @@ nav{
     margin-top: 1rem;
     max-width: 95%;
     padding: 1rem;
+    border-radius: 1rem;
 }
 
 html{
     background-color: #7C7C7C;
 }
 
-#h1,p,a{
-    color:#E6E6E6;
+main h1,p,a{
+    color:#ffffff !important;
+}
+
+#nav_title{
+    margin-bottom: 0;
+    color: #ffffff;
 }
 
 a{
@@ -102,7 +110,7 @@ p, label, h2 {
 }
 
 #name {
-    background-color: #7c7c7c;
+    
     border-color: black;
 }
 
@@ -130,6 +138,10 @@ p, label, h2 {
 
 .edit-delete{
     padding-left: 20px;
+    padding-right: 20px;
+    align-items: center;
+    display: flex;
+    gap: 1rem;
 }
 
 
@@ -139,11 +151,17 @@ ul{
     margin:1rem;
 }
 
+article{
+    background-color:transparent !important;
+}
 
+.edit-delete p{
+    margin-bottom: 0 !important;
+}
 
 /* ADD CAMPAIGN -------------------------------------------- */
 
-#add_campaign {
+#add_campaign, #add_dm {
     display: flex;
     flex-direction: column;
     gap: 1rem;
@@ -160,12 +178,11 @@ ul{
     margin: 2rem auto;
     padding: 1rem;
     border-radius: 0.5rem;
+    background-color: #7c7c7c !important;
     
 }
 
-#campaign_specifics p{
-    color:black !important
-}
+
 
 #details_title{
     text-align: center;

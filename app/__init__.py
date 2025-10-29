@@ -111,7 +111,7 @@ def show_one_campaign(id):
             return not_found_error()
 
 #-----------------------------------------------------------
-# campaign page route - Show details of a single campaign
+# dm page route - Show details of a single campaign
 #-----------------------------------------------------------
 @app.get("/dm/<int:id>")
 def show_one_dm(id):
@@ -132,7 +132,7 @@ def show_one_dm(id):
             result = client.execute(sql, params)
             campaigns = result.rows
 
-            return render_template("pages/user_dm.jinja", dm=dm, campaigns=campaigns)
+            return render_template("pages/admin_dm.jinja", dm=dm, campaigns=campaigns)
                                    
         else:
             # No, so show error
@@ -287,7 +287,7 @@ def show_edit_dm(id):
 #-----------------------------------------------------------
 # Route for editing a campaign
 #-----------------------------------------------------------
-@app.get("/edit/<int:id>")
+@app.post("/edit/<int:id>")
 def edit_campaign(id):
     # Get the data from the form
     name  = request.form.get("name")
@@ -339,7 +339,6 @@ def edit_dm(id):
     dm_email = request.form.get("dm_email")
     dm_phone = request.form.get("dm_phone")
     dm_discord = request.form.get("dm_discord")
-    dm_campaigns = request.form.get("dm_campaigns")
 
 
     # Sanitize text inputs
@@ -347,16 +346,15 @@ def edit_dm(id):
     dm_email = html.escape(dm_email)
     dm_phone = html.escape(dm_phone)
     dm_discord = html.escape(dm_discord)
-    dm_campaigns = html.escape(dm_campaigns)
     
 
     with connect_db() as client:
         sql = """
             UPDATE dms
-            SET dm_name=?, dm_email=?, dm_phone=?, dm_discord=?, dm_campaigns=? 
+            SET dm_name=?, dm_email=?, dm_phone=?, dm_discord=?
             WHERE dm_id=?
         """
-        params = [dm_name, dm_email, dm_phone, dm_discord, dm_campaigns, id]
+        params = [dm_name, dm_email, dm_phone, dm_discord, id]
         client.execute(sql, params)
     
     
