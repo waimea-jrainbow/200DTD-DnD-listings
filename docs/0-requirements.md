@@ -45,6 +45,7 @@ I will need to make sure I am following standard conventions (e.g. placement of 
 
 
 ## Functionality
+
 The functionality implications of a digital technology or digital outcome (e.g. a website) relate to how well it works for the end-user, in terms of meeting its intended purpose.
 
 ### Relevance to the System
