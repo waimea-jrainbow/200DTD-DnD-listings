@@ -1,7 +1,14 @@
+{#=====================================================
+Admin page Dungeon Master listings
+- Lists all DMs
+- Lets admin delete and edit DMs
+- Lets admin make new DMs
+=====================================================#}
+
 {% extends 'pages/base.jinja' %}
 
 {% block title %}
-WaiCol D&D - All dms
+WaiCol D&D - All DMs
 {% endblock %}
 
 {% block content %}
@@ -25,7 +32,7 @@ WaiCol D&D - All dms
     {% endfor %}
 </ul>
 
-
+{# Add a DM #}
 <details id="add_dm">
     <summary role="button">Add a Dungeon Master</summary>
     <form action="/add_dm" method="POST">

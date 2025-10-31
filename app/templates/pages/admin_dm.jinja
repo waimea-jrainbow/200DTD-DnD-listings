@@ -1,7 +1,6 @@
 {#=====================================================
-Campaign page
-- Shows details of a single thing
-- Has a delete link to remove it
+Dungeon Master page
+- Shows details of a single DM
 =====================================================#}
 
 {% extends 'pages/base.jinja' %}
@@ -9,7 +8,7 @@ Campaign page
 
 {% block title %}
 
-Dnd listings - {{ dm.dm_name }}
+WaiCol D&D - {{ dm.dm_name }}
 
 {% endblock %}
 
@@ -27,9 +26,9 @@ Dnd listings - {{ dm.dm_name }}
     <p><strong>Discord:</strong> {{ dm.dm_discord }}</p>
     <p><strong>Campaigns:</strong>
     <ul class="dm_campaigns_list">
-        {% for campaign in campaigns %}
+        {% for campaign in campaigns %} {#Loop through all campaigns#}
         <li>{{ campaign.name }}</li>
-        {% else %}
+        {% else %} {#If no campaigns then say as much#}
         <li>No campaigns assigned</li>
         {% endfor %}
     </ul>

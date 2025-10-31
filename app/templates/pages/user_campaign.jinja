@@ -1,7 +1,7 @@
 {#=====================================================
 Campaign page
-- Shows details of a single thing
-- Has a delete link to remove it
+- Shows details of a single campaign
+- Have links to pre-existing documents
 =====================================================#}
 
 {% extends 'pages/base.jinja' %}
@@ -9,7 +9,7 @@ Campaign page
 
 {% block title %}
 
-Dnd listings - {{ campaign.name }}
+WaiCol D&D - {{ campaign.name }}
 
 {% endblock %}
 
@@ -30,16 +30,16 @@ Dnd listings - {{ campaign.name }}
     <p><strong>Current level: </strong>{{ campaign.current_level }}</p>
     <p><strong>Current documents:</strong></p>
     {% set docs = [campaign.docs_link1, campaign.docs_link2, campaign.docs_link3, campaign.docs_link4,
-    campaign.docs_link5] %}
+    campaign.docs_link5] %} {#Get all the links to any documents#}
 
-    {% for doc in docs %}
+    {% for doc in docs %} {#Loop through all docs#}
     {% if doc %}
     <p>
         <a role="button" href="{{ doc }}" target="_blank" class="btn btn-primary">
             Document {{ loop.index }}
         </a>
     </p>
-    {% else %}
+    {% else %} {#If no docs then say as much for each doc#}
     <p>No {{ loop.index }} document provided</p>
     {% endif %}
     {% endfor %}
